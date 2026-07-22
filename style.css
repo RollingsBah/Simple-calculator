@@ -1,0 +1,107 @@
+/* Reset default browser styles */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* Center the calculator on the page */
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+/* Main calculator container */
+.calculator{
+    width:340px; 
+    background:white;
+    padding:25px;
+    border-radius:20px; 
+    box-shadow:0 12px 30px rgba(0,0,0,0.3);
+}
+
+/* Calculator display screen */
+#display{
+    width:100%;
+    height:70px;
+    margin-bottom:20px;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#f4f4f4;
+    font-size:2rem;
+    text-align:right;
+    color:#333;
+    box-shadow:inset 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Grid layout for the number buttons */
+.number-section{
+    display:grid;
+    grid-template-columns:repeat(4,65px);
+    grid-template-rows:repeat(3,65px);
+    gap:15px;
+    justify-content:center;
+    margin-bottom:20px;
+}
+
+/* General button styling */
+button{
+    width:65px;
+    height:65px;
+    border:none;
+    border-radius:12px;
+    background:white;
+    font-size:1.5rem;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Button hover effect */
+button:hover{
+    background:#4f8ef7;
+    color:#fff;
+    transform:scale(1.05);
+}
+
+/* Button click effect */
+button:active{
+    transform:scale(0.95);
+}
+
+/* Equal button spans two rows */
+.equal{
+    grid-row:2 / span 2;
+    grid-column:4;
+    height:145px;
+    background:red;
+    color:#fff;
+}
+
+.equal:hover{
+    background:red;
+}
+
+/* Grid layout for operator buttons */
+.operators{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+/* Operator button styling */
+.operators button{
+    height:65px;
+    background:#ff9800;
+    color:#fff;
+}
+
+.operators button:hover{
+    background:#e68900;
+}
