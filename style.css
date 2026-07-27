@@ -43,10 +43,8 @@ body{
 .number-section{
     display:grid;
     grid-template-columns:repeat(4,65px);
-    grid-template-rows:repeat(3,65px);
     gap:15px;
     justify-content:center;
-    margin-bottom:20px;
 }
 
 /* General button styling */
@@ -61,6 +59,29 @@ button{
     cursor:pointer;
     transition:0.3s;
     box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+/* Extra scientific calculator buttons */
+.scientific{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:20px;
+}
+
+
+.scientific button{
+
+    height:55px;
+    background:#673ab7;
+    color:white;
+
+}
+
+
+.scientific button:hover{
+
+    background:#512da8;
+
 }
 
 /* Button hover effect */
