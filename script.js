@@ -1,28 +1,52 @@
-// Gets the calculator display element
+// Gets the calculator display
 const display = document.getElementById("display");
 
-// Adds the clicked number or operator to the display
+// Adds values to the display
 function appendValue(value){
-
     display.value += value;
-
 }
-
-// Calculates the expression entered by the user
+// Calculates the answer
 function calculate(){
+    let expression = display.value;
 
-    try{
-
-        // Evaluates the mathematical expression
-        display.value = eval(display.value);
-
+    // Addition
+    if(expression.includes("+")){
+        let numbers = expression.split("+");
+        let first = Number(numbers[0]);
+        let second = Number(numbers[1]);
+        display.value = first + second;
+    }
+    // Subtraction
+    else if(expression.includes("-")){
+        let numbers = expression.split("-");
+        let first = Number(numbers[0]);
+        let second = Number(numbers[1]);
+        display.value = first - second;
     }
 
-    // Displays an error if the expression is invalid
-    catch{
+    // Multiplication
+    else if(expression.includes("*")){
+        let numbers = expression.split("*");
+        let first = Number(numbers[0]);
+        let second = Number(numbers[1]);
+        display.value = first * second;
+    }
 
+    // Division
+    else if(expression.includes("/")){
+        let numbers = expression.split("/");
+        let first = Number(numbers[0]);
+        let second = Number(numbers[1]);
+        if(second == 0){
+            display.value = "Error";
+        }
+        else{
+            display.value = first / second;
+        }
+    }
+
+    // Invalid expression
+    else{
         display.value = "Error";
-
     }
-    
 }
