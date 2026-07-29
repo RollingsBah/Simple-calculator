@@ -1,74 +1,6 @@
 // Gets the calculator display
 const display = document.getElementById("display");
 
-// Adds decimal point
-function decimal(){
-    // Prevent multiple decimal points
-    if(!display.value.includes(".")){
-        display.value += ".";
-    }
-}
-
-// Finds square root
-function squareRoot(){
-
-    let number = Number(display.value);
-
-    if(number < 0 || isNaN(number)){
-        display.value = "Error";
-    }
-    else{
-        display.value = Math.sqrt(number);
-    }
-}
-
-
-// Greatest Common Divisor
-function gcd(a,b){
-
-    while(b !== 0){
-        let temp = b;
-        b = a % b;
-        a = temp;
-    }
-
-    return a;
-}
-
-
-// Converts decimal to fraction
-function decimalToFraction(){
-
-    let decimal = Number(display.value);
-
-    if(isNaN(decimal)){
-        display.value = "Error";
-        return;
-    }
-
-    // Whole number
-    if(Number.isInteger(decimal)){
-        display.value = decimal + "/1";
-        return;
-    }
-
-
-    let decimalPlaces = decimal.toString().split(".")[1].length;
-
-    let denominator = Math.pow(10, decimalPlaces);
-
-    let numerator = decimal * denominator;
-
-
-    let divisor = gcd(numerator, denominator);
-
-
-    numerator = numerator / divisor;
-    denominator = denominator / divisor;
-
-
-    display.value = numerator + "/" + denominator;
-}
 // Adds values to the display
 function appendValue(value) {
   if (display.value === "Error") {
@@ -209,4 +141,91 @@ function calculate() {
   } catch (error) {
     display.value = "Error";
   }
+  
+  if (expression.includes("%")) {
+        let numbers = expression.split("%");
+
+        let first = Number(numbers[0]);
+        let second = Number(numbers[1]);
+
+        display.value = first % second;
+     }
+     // exponent //
+      else if(expression.includes("^")){
+          let numbers = expression.split("^");
+
+          let first = Number(numbers[0]);
+          let second = Number(numbers[1]);
+
+          display.value = Math.pow(first, second);
+      }
+}
+
+// Adds decimal point
+function decimal(){
+    // Prevent multiple decimal points
+    if(!display.value.includes(".")){
+        display.value += ".";
+    }
+}
+
+// Finds square root
+function squareRoot(){
+
+    let number = Number(display.value);
+
+    if(number < 0 || isNaN(number)){
+        display.value = "Error";
+    }
+    else{
+        display.value = Math.sqrt(number);
+    }
+}
+
+
+// Greatest Common Divisor
+function gcd(a,b){
+
+    while(b !== 0){
+        let temp = b;
+        b = a % b;
+        a = temp;
+    }
+
+    return a;
+}
+
+
+// Converts decimal to fraction
+function decimalToFraction(){
+
+    let decimal = Number(display.value);
+
+    if(isNaN(decimal)){
+        display.value = "Error";
+        return;
+    }
+
+    // Whole number
+    if(Number.isInteger(decimal)){
+        display.value = decimal + "/1";
+        return;
+    }
+
+
+    let decimalPlaces = decimal.toString().split(".")[1].length;
+
+    let denominator = Math.pow(10, decimalPlaces);
+
+    let numerator = decimal * denominator;
+
+
+    let divisor = gcd(numerator, denominator);
+
+
+    numerator = numerator / divisor;
+    denominator = denominator / divisor;
+
+
+    display.value = numerator + "/" + denominator;
 }
