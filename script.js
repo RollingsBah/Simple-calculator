@@ -32,8 +32,27 @@ function calculate(){
         display.value = first * second;
     }
 
-    // Division
-    else if(expression.includes("/")){
+    // modulus //
+     else if(expression.includes("%")){
+        let numbers = expression.split("%");
+
+        let first = Number(numbers[0]);
+        let second = Number(numbers[1]);
+
+        display.value = first % second;
+     }
+     // exponent //
+      else if(expression.includes("^")){
+          let numbers = expression.split("^");
+
+          let first = Number(numbers[0]);
+          let second = Number(numbers[1]);
+
+          display.value = Math.pow(first, second);
+      }
+
+     // Division
+     else if(expression.includes("/")){
         let numbers = expression.split("/");
         let first = Number(numbers[0]);
         let second = Number(numbers[1]);
