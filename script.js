@@ -5,10 +5,12 @@ const display = document.getElementById("display");
 function appendValue(value){
     display.value += value;
 }
+
 // Calculates the answer
 function calculate(){
+
     let expression = display.value;
-    
+
     // Combination
     if(expression.includes("C")){
 
@@ -21,10 +23,24 @@ function calculate(){
 
     }
 
+    // Quadratic Equation
+    else if(expression.includes("Q")){
+
+        let numbers = expression.split("Q");
+
+        let a = Number(numbers[0]);
+        let b = Number(numbers[1]);
+        let c = Number(numbers[2]);
+
+        display.value = quadratic(a, b, c);
+
+    }
+
     // Addition
     else if(expression.includes("+")){
 
         let numbers = expression.split("+");
+
         let first = Number(numbers[0]);
         let second = Number(numbers[1]);
 
@@ -36,6 +52,7 @@ function calculate(){
     else if(expression.includes("-")){
 
         let numbers = expression.split("-");
+
         let first = Number(numbers[0]);
         let second = Number(numbers[1]);
 
@@ -47,6 +64,7 @@ function calculate(){
     else if(expression.includes("*")){
 
         let numbers = expression.split("*");
+
         let first = Number(numbers[0]);
         let second = Number(numbers[1]);
 
@@ -58,6 +76,7 @@ function calculate(){
     else if(expression.includes("/")){
 
         let numbers = expression.split("/");
+
         let first = Number(numbers[0]);
         let second = Number(numbers[1]);
 
@@ -66,6 +85,7 @@ function calculate(){
             display.value = "Error";
 
         }
+
         else{
 
             display.value = first / second;
@@ -74,16 +94,20 @@ function calculate(){
 
     }
 
-
     // Invalid expression
     else{
+
         display.value = "Error";
+
     }
 
 }
 
 
-// Calculates factorial
+// ==========================
+// FACTORIAL
+// ==========================
+
 function factorial(number){
 
     let result = 1;
@@ -99,14 +123,44 @@ function factorial(number){
 }
 
 
-// Calculates combination
+// ==========================
+// COMBINATION (nCr)
+// ==========================
+
 function combination(n, r){
 
     let answer;
 
     answer = factorial(n) /
-            (factorial(r) * factorial(n-r));
+             (factorial(r) * factorial(n - r));
 
     return answer;
+
+}
+
+
+// ==========================
+// QUADRATIC EQUATION
+// ==========================
+
+function quadratic(a, b, c){
+
+    let discriminant;
+
+    discriminant = (b * b) - (4 * a * c);
+
+    if(discriminant < 0){
+
+        return "No real solution";
+
+    }
+
+    let root = Math.sqrt(discriminant);
+
+    let x1 = (-b + root) / (2 * a);
+
+    let x2 = (-b - root) / (2 * a);
+
+    return "x1 = " + x1 + " , x2 = " + x2;
 
 }
