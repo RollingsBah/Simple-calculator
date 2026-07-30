@@ -229,3 +229,67 @@ function decimalToFraction(){
 
     display.value = numerator + "/" + denominator;
 }
+// DELETE last digit
+function deleteLast(){
+     const display = document.getElementById("display");
+        if (display.value.length > 1) {
+    display.value = display.value.slice(0, -1);
+
+} else{
+    display.value ='';
+    currentInput = '';
+}
+}
+
+// clear button done!
+function acButton(){
+    const display = document.getElementById("display");
+    display.value = '';
+    currentInput = '';
+}
+
+// save history
+function saveHistory(){
+
+    // save the history array to local storage
+    localStorage.setItem("calculatorHistory", JSON.stringify(history));
+
+    // show save confirmation message
+    document.getElementById("display").value = "History saved!";
+        setTimeout(() =>{
+            document.getElementById("display").value = display.value;
+        }, 1000);
+        
+    }
+  // History actions
+let historyList = JSON.parse(localStorage.getItem('calcHistory')) || [];
+let clearedList = JSON.parse(localStorage.getItem('clearedHistory')) || [];
+
+// 3. RETRIEVE button - get last saved calculation back
+function retrievehistory() {
+    if(historyList.length === 0) {
+        alert('No saved history');
+        return;
+    }
+    let lastCalc = historyList[historyList.length - 1];
+    display.value = lastCalc; // puts it back in calculator screen
+}
+
+// 4. PREVIEW button - show all saved calculations
+function prevewHistory() {
+    if(historyList.length === 0) {
+        alert('No history to preview');
+        return;
+    }
+    alert('Saved History:\n' + historyList.join('\n'));
+}
+
+// 5. CLEARED button - save what was cleared so you can get it back
+function clearedHistory() {
+    if(display.value !== '') {
+        clearedList.push(display.value);
+        localStorage.setItem('clearedHistory', JSON.stringify(clearedList));
+        display.value = ''; // clear screen
+        alert('Cleared and saved');
+    }
+}
