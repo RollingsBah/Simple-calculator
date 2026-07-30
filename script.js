@@ -261,6 +261,7 @@ function saveHistory(){
         }, 1000);
         
     }
+        
   // History actions
 let historyList = JSON.parse(localStorage.getItem('calcHistory')) || [];
 let clearedList = JSON.parse(localStorage.getItem('clearedHistory')) || [];
@@ -293,7 +294,6 @@ function prevewHistory() {
     }
     alert('Saved History:\n' + historyList.join('\n'));
 }
-
 // 5. CLEARED button - save what was cleared so you can get it back
 function clearedHistory() {
     if(display.value !== '') {
@@ -303,3 +303,5 @@ function clearedHistory() {
         alert('Cleared and saved');
     }
 }
+    
+    
