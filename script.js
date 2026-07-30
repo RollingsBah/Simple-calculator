@@ -275,6 +275,16 @@ function retrievehistory() {
     display.value = lastCalc; // puts it back in calculator screen
 }
 
+// 6. BONUS: Retrieve last cleared calculation
+function retrievehistory() {
+    if(clearedList.length === 0) {
+        alert('No cleared history');
+        return;
+    }
+    let lastCleared = clearedList[clearedList.length - 1];
+    display.value = lastCleared;
+}
+
 // 4. PREVIEW button - show all saved calculations
 function prevewHistory() {
     if(historyList.length === 0) {
@@ -292,14 +302,4 @@ function clearedHistory() {
         display.value = ''; // clear screen
         alert('Cleared and saved');
     }
-}
-
-// 6. BONUS: Retrieve last cleared calculation
-function retrievehistory() {
-    if(clearedList.length === 0) {
-        alert('No cleared history');
-        return;
-    }
-    let lastCleared = clearedList[clearedList.length - 1];
-    display.value = lastCleared;
 }
