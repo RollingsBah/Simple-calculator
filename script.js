@@ -93,23 +93,27 @@ if (expression.includes("Q")) {
     // -------------------------
     // Combination (nCr)
     // -------------------------
-    if (expression.includes("C")) {
+ if (expression.includes("C")) {
 
-        let numbers = expression.split("C");
+    let numbers = expression.split("C");
 
-        let n = Number(numbers[0]);
-        let r = Number(numbers[1]);
+    let n = Number(numbers[0]);
+    let r = Number(numbers[1]);
 
-        if (
-    isNaN(n) ||
-    isNaN(r) ||
-    !Number.isInteger(n) ||
-    !Number.isInteger(r) ||
-    n < 0 ||
-    r < 0 ||
-    r > n
-) {
-    display.value = "Error";
+    if (
+        isNaN(n) ||
+        isNaN(r) ||
+        !Number.isInteger(n) ||
+        !Number.isInteger(r) ||
+        n < 0 ||
+        r < 0 ||
+        r > n
+    ) {
+        display.value = "Error";
+        return;
+    }
+
+    display.value = combination(n, r);
     return;
 }
     // -------------------------
@@ -402,13 +406,13 @@ function squareRoot(number) {
 
         middle = (low + high) / 2;
 
-        if ((middle * middle) === number) {
+        if (Math.abs((middle * middle) - number) < 0.000001) {
             return middle;
         }
 
-        if (Math.abs((middle * middle) - number) < 0.000001)
-        }
-        else {
+        if ((middle * middle) < number) {
+            low = middle;
+        } else {
             high = middle;
         }
 
