@@ -36,6 +36,21 @@ function clearDisplay() {
 function deleteLast() {
     display.value = display.value.slice(0, -1);
 }
+// =========================================
+// SQUARE ROOT BUTTON
+// =========================================
+function squareRootValue() {
+
+    let number = Number(display.value);
+
+    if (isNaN(number) || number < 0) {
+        display.value = "Error";
+        return;
+    }
+
+    display.value = squareRoot(number);
+
+}
 
 // =========================================
 // CALCULATE
@@ -85,14 +100,18 @@ if (expression.includes("Q")) {
         let n = Number(numbers[0]);
         let r = Number(numbers[1]);
 
-        if (isNaN(n) || isNaN(r) || r > n) {
-            display.value = "Error";
-            return;
-        }
-
-        display.value = combination(n, r);
-        return;
-    }
+        if (
+    isNaN(n) ||
+    isNaN(r) ||
+    !Number.isInteger(n) ||
+    !Number.isInteger(r) ||
+    n < 0 ||
+    r < 0 ||
+    r > n
+) {
+    display.value = "Error";
+    return;
+}
     // -------------------------
     // Modulus
     // -------------------------
@@ -338,18 +357,19 @@ function evaluateExpression(expression) {
 
 function factorial(number) {
 
+    if (number < 0) {
+        return NaN;
+    }
+
     let result = 1;
 
-    for (let i = 1; i <= number; i++) {
-
+    for (let i = 2; i <= number; i++) {
         result *= i;
-
     }
 
     return result;
 
 }
-
 // =========================================
 // COMBINATION (nCr)
 // =========================================
@@ -386,8 +406,7 @@ function squareRoot(number) {
             return middle;
         }
 
-        if ((middle * middle) < number) {
-            low = middle;
+        if (Math.abs((middle * middle) - number) < 0.000001)
         }
         else {
             high = middle;
