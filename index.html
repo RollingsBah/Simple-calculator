@@ -1,7 +1,8 @@
-
-<! DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,6 +12,8 @@
 <link rel="stylesheet" href="style.css">
 
 </head>
+
+
 <body>
 
 <!-- Main calculator container -->
@@ -37,34 +40,45 @@
 
     </div>
 
+
     <!-- Displays the input and result -->
     <input type="text" id="display" readonly>
+
 
     <!-- Operator buttons -->
     <div class="operators">
 
-    <button onclick="appendValue('+')">+</button>
-    <button onclick="appendValue('-')">-</button>
-    <button onclick="appendValue('/')">/</button>
-    <button onclick="appendValue('*')">*</button>
-         <button onclick="appendValue('%')">%</button>
-    <button onclick="appendValue('^')">^</button>
-    <button onclick="decimal()">.</button>
-    <button onclick="squareRoot()">√</button>
-    <button onclick="decimalToFraction()">a/b</button>
-      <button onclick="appendValue('(')">(</button>
-        <button onclick="appendValue(')')">)</button>
-        <button onclick="appendValue('C')">C</button>
-<button onclick="appendValue('Q')">Q</button>
+        <button onclick="appendValue('+')">+</button>
+        <button onclick="appendValue('-')">-</button>
+        <button onclick="appendValue('/')">/</button>
+        <button onclick="appendValue('*')">*</button>
 
-</div>
-        
+        <button onclick="appendValue('%')">%</button>
+        <button onclick="appendValue('^')">^</button>
+
+        <button onclick="decimal()">.</button>
+
+        <!-- Fixed square root button -->
+        <button onclick="squareRootValue()">√</button>
+
+        <button onclick="decimalToFraction()">a/b</button>
+
+        <button onclick="appendValue('(')">(</button>
+        <button onclick="appendValue(')')">)</button>
+
+        <button onclick="appendValue('C')">C</button>
+
+        <button onclick="appendValue('Q')">Q</button>
 
     </div>
 
+
 </div>
+
 
 <!-- Links the JavaScript file -->
 <script src="script.js"></script>
 
 </body>
+
+</html>
