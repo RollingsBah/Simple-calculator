@@ -50,6 +50,31 @@ function calculate() {
         return;
     }
 
+// -------------------------
+// Quadratic Equation
+// -------------------------
+if (expression.includes("Q")) {
+
+    let numbers = expression.split("Q");
+
+    if (numbers.length != 3) {
+        display.value = "Error";
+        return;
+    }
+
+    let a = Number(numbers[0]);
+    let b = Number(numbers[1]);
+    let c = Number(numbers[2]);
+
+    if (isNaN(a) || isNaN(b) || isNaN(c) || a == 0) {
+        display.value = "Error";
+        return;
+    }
+
+    display.value = quadratic(a, b, c);
+    return;
+}
+
     // -------------------------
     // Combination (nCr)
     // -------------------------
@@ -68,7 +93,6 @@ function calculate() {
         display.value = combination(n, r);
         return;
     }
-
     // -------------------------
     // Modulus
     // -------------------------
@@ -336,7 +360,25 @@ function combination(n, r) {
         (factorial(r) * factorial(n - r));
 
 }
+// =========================================
+// QUADRATIC EQUATION
+// =========================================
 
+function quadratic(a, b, c) {
+
+    let discriminant = (b * b) - (4 * a * c);
+
+    if (discriminant < 0) {
+        return "No real solution";
+    }
+
+    let root = Math.sqrt(discriminant);
+
+    let x1 = (-b + root) / (2 * a);
+    let x2 = (-b - root) / (2 * a);
+
+    return "x1 = " + x1 + ", x2 = " + x2;
+}
 // =========================================
 // GREATEST COMMON DIVISOR
 // =========================================
