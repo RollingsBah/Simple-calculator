@@ -361,6 +361,44 @@ function combination(n, r) {
 
 }
 // =========================================
+// SQUARE ROOT (BINARY SEARCH)
+// =========================================
+
+function squareRoot(number) {
+
+    if (number < 0) {
+        return "Error";
+    }
+
+    if (number === 0 || number === 1) {
+        return number;
+    }
+
+    let low = 0;
+    let high = number;
+    let middle;
+
+    while ((high - low) > 0.000001) {
+
+        middle = (low + high) / 2;
+
+        if ((middle * middle) === number) {
+            return middle;
+        }
+
+        if ((middle * middle) < number) {
+            low = middle;
+        }
+        else {
+            high = middle;
+        }
+
+    }
+
+    return (low + high) / 2;
+
+}
+// =========================================
 // QUADRATIC EQUATION
 // =========================================
 
@@ -372,7 +410,7 @@ function quadratic(a, b, c) {
         return "No real solution";
     }
 
-    let root = Math.sqrt(discriminant);
+    let root = squareRoot(discriminant);
 
     let x1 = (-b + root) / (2 * a);
     let x2 = (-b - root) / (2 * a);
