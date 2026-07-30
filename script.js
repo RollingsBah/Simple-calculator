@@ -293,3 +293,13 @@ function clearedHistory() {
         alert('Cleared and saved');
     }
 }
+
+// 6. BONUS: Retrieve last cleared calculation
+function retrievehistory() {
+    if(clearedList.length === 0) {
+        alert('No cleared history');
+        return;
+    }
+    let lastCleared = clearedList[clearedList.length - 1];
+    display.value = lastCleared;
+}
