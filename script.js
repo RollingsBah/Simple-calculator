@@ -247,6 +247,38 @@ function acButton(){
     display.value = '';
     currentInput = '';
 }
+  // History actions
+let historyList = JSON.parse(localStorage.getItem('calcHistory')) || [];
+let clearedList = JSON.parse(localStorage.getItem('clearedHistory')) || [];
+
+
+// 1.retrievehidstory Retrieve last cleared calculation
+function retrievehistory() {
+    if(clearedList.length === 0) {
+        alert('No cleared history');
+        return;
+    }
+    let lastCleared = clearedList[clearedList.length - 1];
+    display.value = lastCleared;
+}
+// 2. PREVIEW button - show all saved calculations
+function previewHistory() {
+    if(historyList.length === 0) {
+        alert('No history to preview');
+        return;
+    }
+    alert('Saved History:\n' + historyList.join('\n'));
+}
+
+// 3. CLEARED button - save what was cleared so you can get it back
+function clearedHistory() {
+    if(display.value !== '') {
+        clearedList.push(display.value);
+        localStorage.setItem('clearedHistory', JSON.stringify(clearedList));
+        display.value = ''; // clear screen, no alart
+        alert('Cleared and saved');
+    }
+}
 
 // save history
 function saveHistory(){
@@ -261,47 +293,6 @@ function saveHistory(){
         }, 1000);
         
     }
-        
-  // History actions
-let historyList = JSON.parse(localStorage.getItem('calcHistory')) || [];
-let clearedList = JSON.parse(localStorage.getItem('clearedHistory')) || [];
 
-// 3. RETRIEVE button - get last saved calculation back
-function retrievehistory() {
-    if(historyList.length === 0) {
-        alert('No saved history');
-        return;
-    }
-    let lastCalc = historyList[historyList.length - 1];
-    display.value = lastCalc; // puts it back in calculator screen
-}
-
-// 6. BONUS: Retrieve last cleared calculation
-function retrievehistory() {
-    if(clearedList.length === 0) {
-        alert('No cleared history');
-        return;
-    }
-    let lastCleared = clearedList[clearedList.length - 1];
-    display.value = lastCleared;
-}
-
-// 4. PREVIEW button - show all saved calculations
-function prevewHistory() {
-    if(historyList.length === 0) {
-        alert('No history to preview');
-        return;
-    }
-    alert('Saved History:\n' + historyList.join('\n'));
-}
-// 5. CLEARED button - save what was cleared so you can get it back
-function clearedHistory() {
-    if(display.value !== '') {
-        clearedList.push(display.value);
-        localStorage.setItem('clearedHistory', JSON.stringify(clearedList));
-        display.value = ''; // clear screen
-        alert('Cleared and saved');
-    }
-}
     
     
