@@ -1,68 +1,36 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Calculator</title>
-
-<!-- Links the CSS file for styling -->
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts Import -->
+<link rel="preconnect" href="https://googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+<link href="https://googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
 </head>
 <body>
-
-<!-- Main calculator container -->
-<div class="calculator">
     
-    <div class="number-section">
-
-        <button onclick="appendValue('0')">0</button>
-        <button onclick="appendValue('3')">3</button>
-        <button onclick="appendValue('6')">6</button>
-
-        <button onclick="appendValue('9')">9</button>
-
-        <button onclick="appendValue('1')">1</button>
-        <button onclick="appendValue('4')">4</button>
-        <button onclick="appendValue('7')">7</button>
-
-        <!-- Calculates the expression -->
-        <button class="equal" onclick="calculate()">=</button>
-
-        <button onclick="appendValue('2')">2</button>
-        <button onclick="appendValue('5')">5</button>
-        <button onclick="appendValue('8')">8</button>
-
+    <div class="header">
+        <p>Abd <span id="report">Report</span></p>
+        <div id="menu">
+            <img id="menu-img" src="images/menu.svg" alt="">
+        </div>
+    </div>
+    <div class="content">
+        yobro
+    </div>
+    <div id="center">
+        <ul type="none">
+            <li>Explanation</li>
+            <li>Flowchart</li>
+            <li>Screenshoot</li>
+        </ul>
     </div>
 
-    <!-- Displays the input and result -->
-    <input type="text" id="display" readonly>
 
-    <!-- Operator buttons -->
-    <div class="operators">
-
-    <button onclick="appendValue('+')">+</button>
-    <button onclick="appendValue('-')">-</button>
-    <button onclick="appendValue('/')">/</button>
-    <button onclick="appendValue('*')">*</button>
-         <button onclick="appendValue('%')">%</button>
-    <button onclick="appendValue('^')">^</button>
-    <button onclick="decimal()">.</button>
-    <button onclick="squareRoot()">√</button>
-    <button onclick="decimalToFraction()">a/b</button>
-      <button onclick="appendValue('(')">(</button>
-        <button onclick="appendValue(')')">)</button>
-
-</div>
-        
-
-    </div>
-
-</div>
-
-<!-- Links the JavaScript file -->
-<script src="script.js"></script>
-
+    <script src="main.js"></script>
 </body>
+</html>
