@@ -1,3 +1,4 @@
+
 // =========================================
 // CALCULATOR DISPLAY
 // =========================================
@@ -676,3 +677,4 @@ function decimalToFraction() {
     display.value = numerator + "/" + denominator;
 
 }
+
