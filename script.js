@@ -655,7 +655,6 @@ function decimalToFraction() {
         return;
 
     }
-
     if (Number.isInteger(decimal)) {
 
         display.value = decimal + "/1";
