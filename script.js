@@ -1,346 +1,678 @@
-
-// Gets the calculator display
+// =========================================
+// CALCULATOR DISPLAY
+// =========================================
 const display = document.getElementById("display");
 
-// Adds values to the display
-function appendValue(value){
+// =========================================
+// DISPLAY FUNCTIONS
+// =========================================
+
+// Add values to the display
+function appendValue(value) {
+    if (display.value === "Error") {
+        display.value = "";
+    }
+
     display.value += value;
 }
-// Calculates the answer
-function calculate(){
-    let expression = display.value;
 
-    // Combination
-    if(expression.includes("C")){
+// Add decimal point
+function decimal() {
 
-        let numbers = expression.split("C");
+    let parts = display.value.split(/[+\-*/%^C()]/);
+    let current = parts[parts.length - 1];
 
-        let n = Number(numbers[0]);
-        let r = Number(numbers[1]);
-
-        display.value = combination(n, r);
-
+    if (!current.includes(".")) {
+        display.value += ".";
     }
+}
 
-    // Addition
-    else if(expression.includes("+")){
+// Clear display
+function clearDisplay() {
+    display.value = "";
+}
 
-        let numbers = expression.split("+");
-        let first = Number(numbers[0]);
-        let second = Number(numbers[1]);
+// Delete one character
+function deleteLast() {
+    display.value = display.value.slice(0, -1);
+}
+// =========================================
+// SQUARE ROOT BUTTON
+// =========================================
+function squareRootValue() {
 
-        display.value = first + second;
+    let number = Number(display.value);
 
-    }
-
-    // Subtraction
-    else if(expression.includes("-")){
-
-        let numbers = expression.split("-");
-        let first = Number(numbers[0]);
-        let second = Number(numbers[1]);
-
-        display.value = first - second;
-
-    }
-
-    // Multiplication
-    else if(expression.includes("*")){
-
-        let numbers = expression.split("*");
-        let first = Number(numbers[0]);
-        let second = Number(numbers[1]);
-
-        display.value = first * second;
-
-    }
-
-    // Division
-    else if(expression.includes("/")){
-
-        let numbers = expression.split("/");
-        let first = Number(numbers[0]);
-        let second = Number(numbers[1]);
-
-        if(second == 0){
-
-            display.value = "Error";
-
-        }
-        else{
-
-            display.value = first / second;
-
-        }
-
-    }
-
-
-    // Invalid expression
-    else{
+    if (isNaN(number) || number < 0) {
         display.value = "Error";
+        return;
+    }
+
+    display.value = squareRoot(number);
+
+}
+
+// =========================================
+// CALCULATE
+// =========================================
+
+function calculate() {
+
+    let expression = display.value.trim();
+
+    if (expression === "") {
+        display.value = "Error";
+        return;
+    }
+// =========================================
+// QUADRATIC EQUATION
+// Format: ax²+bx+ceqy
+// Example: 2x²-5x+3eq7
+// =========================================
+
+let eqPosition = -1;
+
+// Find "eq"
+for (let i = 0; i < expression.length - 1; i++) {
+
+    if (expression[i] === "e" && expression[i + 1] === "q") {
+
+        eqPosition = i;
+        break;
+
     }
 
 }
 
+if (eqPosition !== -1) {
 
-// Calculates factorial
-function factorial(number){
+    let left = "";
+    let right = "";
 
-    let result = 1;
+    // Get left side
+    for (let i = 0; i < eqPosition; i++) {
 
-    for(let i = 1; i <= number; i++){
+        left += expression[i];
 
-        result = result * i;
+    }
 
+    // Get y value
+    for (let i = eqPosition + 2; i < expression.length; i++) {
+
+        right += expression[i];
+
+    }
+
+    let y = Number(right);
+
+    if (isNaN(y)) {
+
+        display.value = "Error";
+        return;
+
+    }
+
+
+    let a = 0;
+    let b = 0;
+    let c = 0;
+
+
+    // Find x² position
+
+    let xSquarePosition = -1;
+
+    for (let i = 0; i < left.length - 1; i++) {
+
+        if (left[i] === "x" && left[i + 1] === "²") {
+
+            xSquarePosition = i;
+            break;
+
+        }
+
+    }
+
+
+    if (xSquarePosition === -1) {
+
+        display.value = "Error";
+        return;
+
+    }
+
+
+    // Get a
+
+    let aText = "";
+
+    for (let i = 0; i < xSquarePosition; i++) {
+
+        aText += left[i];
+
+    }
+
+
+    if (aText === "" || aText === "+") {
+
+        a = 1;
+
+    } 
+    else if (aText === "-") {
+
+        a = -1;
+
+    } 
+    else {
+
+        a = Number(aText);
+
+    }
+
+
+    // Remaining part after x²
+
+    let remaining = "";
+
+    for (let i = xSquarePosition + 2; i < left.length; i++) {
+
+        remaining += left[i];
+
+    }
+
+
+    // Find x position
+
+    let xPosition = -1;
+
+    for (let i = 0; i < remaining.length; i++) {
+
+        if (remaining[i] === "x") {
+
+            xPosition = i;
+            break;
+
+        }
+
+    }
+
+
+    if (xPosition === -1) {
+
+        display.value = "Error";
+        return;
+
+    }
+
+
+    // Get b
+
+    let bText = "";
+
+    for (let i = 0; i < xPosition; i++) {
+
+        bText += remaining[i];
+
+    }
+
+
+    if (bText === "" || bText === "+") {
+
+        b = 1;
+
+    }
+    else if (bText === "-") {
+
+        b = -1;
+
+    }
+    else {
+
+        b = Number(bText);
+
+    }
+
+
+    // Get c
+
+    let cText = "";
+
+    for (let i = xPosition + 1; i < remaining.length; i++) {
+
+        cText += remaining[i];
+
+    }
+
+
+    c = Number(cText);
+
+
+    if (isNaN(a) || isNaN(b) || isNaN(c) || a === 0) {
+
+        display.value = "Error";
+        return;
+
+    }
+
+
+    // ax²+bx+c=y
+    // becomes ax²+bx+(c-y)=0
+
+    c = c - y;
+
+
+    // Discriminant
+
+    let d = (b * b) - (4 * a * c);
+
+
+    if (d < 0) {
+
+        display.value = "No Real Roots";
+        return;
+
+    }
+
+
+    let root = squareRoot(d);
+
+
+    let x1 = (-b + root) / (2 * a);
+
+    let x2 = (-b - root) / (2 * a);
+
+
+    display.value = "x1=" + x1 + " , x2=" + x2;
+
+    return;
+
+}
+
+    // -------------------------
+    // Combination (nCr)
+    // -------------------------
+ if (expression.includes("C")) {
+
+    let numbers = expression.split("C");
+
+    let n = Number(numbers[0]);
+    let r = Number(numbers[1]);
+
+    if (
+        isNaN(n) ||
+        isNaN(r) ||
+        !Number.isInteger(n) ||
+        !Number.isInteger(r) ||
+        n < 0 ||
+        r < 0 ||
+        r > n
+    ) {
+        display.value = "Error";
+        return;
+    }
+
+    display.value = combination(n, r);
+    return;
+}
+    // -------------------------
+    // Modulus
+    // -------------------------
+    if (expression.includes("%")) {
+
+        let numbers = expression.split("%");
+
+        let first = Number(numbers[0]);
+        let second = Number(numbers[1]);
+
+        if (isNaN(first) || isNaN(second)) {
+            display.value = "Error";
+            return;
+        }
+
+        display.value = first % second;
+        return;
+    }
+
+    // -------------------------
+    // Exponent
+    // -------------------------
+    if (expression.includes("^")) {
+
+        let numbers = expression.split("^");
+
+        let first = Number(numbers[0]);
+        let second = Number(numbers[1]);
+
+        if (isNaN(first) || isNaN(second)) {
+            display.value = "Error";
+            return;
+        }
+
+        let answer = 1;
+
+        for (let i = 0; i < second; i++) {
+            answer *= first;
+        }
+
+        display.value = answer;
+        return;
+    }
+
+    // -------------------------
+    // Normal Expression
+    // -------------------------
+    try {
+
+        display.value = evaluateExpression(expression);
+
+    } catch {
+
+        display.value = "Error";
+
+    }
+}
+
+// =========================================
+// TOKENIZER
+// =========================================
+
+function tokenizeExpression(expression) {
+
+    const tokens = [];
+
+    for (let i = 0; i < expression.length; i++) {
+
+        const char = expression[i];
+
+        if (/\s/.test(char)) {
+            continue;
+        }
+
+        if (/[0-9.]/.test(char)) {
+
+            let number = char;
+
+            while (
+                i + 1 < expression.length &&
+                /[0-9.]/.test(expression[i + 1])
+            ) {
+                number += expression[++i];
+            }
+
+            tokens.push(Number(number));
+
+        }
+
+        else if (char === "x") {
+
+            tokens.push("*");
+
+        }
+
+        else if ("+-*/()".includes(char)) {
+
+            tokens.push(char);
+
+        }
+
+        else {
+
+            throw new Error("Invalid Expression");
+
+        }
+
+    }
+
+    return tokens;
+}
+
+// =========================================
+// EXPRESSION EVALUATOR
+// =========================================
+
+function evaluateExpression(expression) {
+
+    const tokens = tokenizeExpression(expression);
+
+    let index = 0;
+
+    function peek() {
+        return tokens[index];
+    }
+
+    function advance() {
+        return tokens[index++];
+    }
+
+    function parseExpression() {
+
+        let value = parseTerm();
+
+        while (peek() === "+" || peek() === "-") {
+
+            let operator = advance();
+
+            let right = parseTerm();
+
+            value = operator === "+"
+                ? value + right
+                : value - right;
+
+        }
+
+        return value;
+    }
+
+    function parseTerm() {
+
+        let value = parseFactor();
+
+        while (peek() === "*" || peek() === "/") {
+
+            let operator = advance();
+
+            let right = parseFactor();
+
+            if (operator === "*") {
+
+                value *= right;
+
+            }
+
+            else {
+
+                if (right === 0) {
+                    throw new Error();
+                }
+
+                value /= right;
+
+            }
+
+        }
+
+        return value;
+
+    }
+
+    function parseFactor() {
+
+        let token = peek();
+
+        if (token === "+") {
+
+            advance();
+
+            return parseFactor();
+
+        }
+
+        if (token === "-") {
+
+            advance();
+
+            return -parseFactor();
+
+        }
+
+        if (token === "(") {
+
+            advance();
+
+            let value = parseExpression();
+
+            if (peek() !== ")") {
+                throw new Error();
+            }
+
+            advance();
+
+            return value;
+
+        }
+
+        if (typeof token === "number") {
+
+            advance();
+
+            return token;
+
+        }
+
+        throw new Error();
+
+    }
+
+    let result = parseExpression();
+
+    if (peek() !== undefined) {
+        throw new Error();
     }
 
     return result;
 
 }
 
+// =========================================
+// FACTORIAL
+// =========================================
 
-// Calculates combination
-function combination(n, r){
+function factorial(number) {
 
-    let answer;
-
-    answer = factorial(n) /
-            (factorial(r) * factorial(n-r));
-
-    return answer;
-
-}
-
-// Gets the calculator display
-const display = document.getElementById("display");
-
-// Adds values to the display
-function appendValue(value) {
-  if (display.value === "Error") {
-    display.value = "";
-  }
-  display.value += value;
-}
-
-// Tokenizes the expression into numbers and operators
-function tokenizeExpression(expression) {
-  const tokens = [];
-
-  for (let i = 0; i < expression.length; i++) {
-    const char = expression[i];
-
-    if (/\s/.test(char)) {
-      continue;
+    if (number < 0) {
+        return NaN;
     }
 
-    if (/[0-9.]/.test(char)) {
-      let number = char;
+    let result = 1;
 
-      while (i + 1 < expression.length && /[0-9.]/.test(expression[i + 1])) {
-        number += expression[++i];
-      }
-
-      tokens.push(Number(number));
-    } else if (char === "x") {
-      tokens.push("*");
-    } else if ("+-*/()".includes(char)) {
-      tokens.push(char);
-    } else {
-      throw new Error("Invalid expression");
+    for (let i = 2; i <= number; i++) {
+        result *= i;
     }
-  }
 
-  return tokens;
+    return result;
+
 }
+// =========================================
+// COMBINATION (nCr)
+// =========================================
 
-// Evaluates the expression using BODMAS-style precedence
-function evaluateExpression(expression) {
-  const tokens = tokenizeExpression(expression);
-  let index = 0;
+function combination(n, r) {
 
-  function peek() {
-    return tokens[index];
-  }
+    return factorial(n) /
+        (factorial(r) * factorial(n - r));
 
-  function advance() {
-    return tokens[index++];
-  }
+}
+// =========================================
+// SQUARE ROOT (BINARY SEARCH)
+// =========================================
 
-  function parseExpression() {
-    let value = parseTerm();
+function squareRoot(number) {
 
-    while (peek() === "+" || peek() === "-") {
-      const operator = advance();
-      const right = parseTerm();
-      value = operator === "+" ? value + right : value - right;
+    if (number < 0) {
+        return "Error";
     }
 
-    return value;
-  }
+    if (number === 0 || number === 1) {
+        return number;
+    }
 
-  function parseTerm() {
-    let value = parseFactor();
+    let low = 0;
+    let high = number;
+    let middle;
 
-    while (peek() === "*" || peek() === "/") {
-      const operator = advance();
-      const right = parseFactor();
+    while ((high - low) > 0.000001) {
 
-      if (operator === "*") {
-        value *= right;
-      } else {
-        if (right === 0) {
-          throw new Error("Division by zero");
+        middle = (low + high) / 2;
+
+        if (Math.abs((middle * middle) - number) < 0.000001) {
+            return middle;
         }
-        value /= right;
-      }
+
+        if ((middle * middle) < number) {
+            low = middle;
+        } else {
+            high = middle;
+        }
+
     }
 
-    return value;
-  }
+    return (low + high) / 2;
 
-  function parseFactor() {
-    const token = peek();
-
-    if (token === "+") {
-      advance();
-      return parseFactor();
-    }
-
-    if (token === "-") {
-      advance();
-      return -parseFactor();
-    }
-
-    if (token === "(") {
-      advance();
-      const value = parseExpression();
-
-      if (peek() !== ")") {
-        throw new Error("Invalid expression");
-      }
-
-      advance();
-      return value;
-    }
-
-    if (typeof token === "number") {
-      advance();
-      return token;
-    }
-
-    throw new Error("Invalid expression");
-  }
-
-  const result = parseExpression();
-
-  if (peek() !== undefined) {
-    throw new Error("Invalid expression");
-  }
-
-  return result;
 }
 
-// Calculates the answer
-function calculate() {
-  const expression = display.value.trim();
+// =========================================
+// GREATEST COMMON DIVISOR
+// =========================================
 
-  if (!expression) {
-    display.value = "Error";
-    return;
-  }
+function gcd(a, b) {
 
-  try {
-    display.value = evaluateExpression(expression);
-  } catch (error) {
-    display.value = "Error";
-  }
-  
-  if (expression.includes("%")) {
-        let numbers = expression.split("%");
+    while (b !== 0) {
 
-        let first = Number(numbers[0]);
-        let second = Number(numbers[1]);
-
-        display.value = first % second;
-     }
-     // exponent //
-      else if(expression.includes("^")){
-          let numbers = expression.split("^");
-
-          let first = Number(numbers[0]);
-          let second = Number(numbers[1]);
-
-          display.value = Math.pow(first, second);
-      }
-}
-
-// Adds decimal point
-function decimal(){
-    // Prevent multiple decimal points
-    if(!display.value.includes(".")){
-        display.value += ".";
-    }
-}
-
-// Finds square root
-function squareRoot(){
-
-    let number = Number(display.value);
-
-    if(number < 0 || isNaN(number)){
-        display.value = "Error";
-    }
-    else{
-        display.value = Math.sqrt(number);
-    }
-}
-
-
-// Greatest Common Divisor
-function gcd(a,b){
-
-    while(b !== 0){
         let temp = b;
+
         b = a % b;
+
         a = temp;
+
     }
 
     return a;
+
 }
 
+// =========================================
+// DECIMAL TO FRACTION
+// =========================================
 
-// Converts decimal to fraction
-function decimalToFraction(){
+function decimalToFraction() {
 
     let decimal = Number(display.value);
 
-    if(isNaN(decimal)){
+    if (isNaN(decimal)) {
+
         display.value = "Error";
         return;
+
     }
 
-    // Whole number
-    if(Number.isInteger(decimal)){
+    if (Number.isInteger(decimal)) {
+
         display.value = decimal + "/1";
         return;
-    }
 
+    }
 
     let decimalPlaces = decimal.toString().split(".")[1].length;
 
-    let denominator = Math.pow(10, decimalPlaces);
+    let denominator = 10 ** decimalPlaces;
 
     let numerator = decimal * denominator;
 
-
     let divisor = gcd(numerator, denominator);
 
-
-    numerator = numerator / divisor;
-    denominator = denominator / divisor;
-
+    numerator /= divisor;
+    denominator /= divisor;
 
     display.value = numerator + "/" + denominator;
-}
 
+}
