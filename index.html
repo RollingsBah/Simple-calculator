@@ -1,23 +1,23 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Calculator</title>
 
 <!-- Links the CSS file for styling -->
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=4">
 
 </head>
-
 <body>
 
 <!-- Main calculator container -->
 <div class="calculator">
+
+    <!-- History panel shown by the preview button -->
+    <div id="history-panel" class="history-panel"></div>
     
     <div class="number-section">
 
@@ -26,7 +26,6 @@
         <button onclick="appendValue('6')">6</button>
 
         <button onclick="appendValue('9')">9</button>
-
         <button onclick="appendValue('1')">1</button>
         <button onclick="appendValue('4')">4</button>
         <button onclick="appendValue('7')">7</button>
@@ -39,49 +38,45 @@
         <button onclick="appendValue('8')">8</button>
 
     </div>
+
     <!-- Displays the input and result -->
     <input type="text" id="display" readonly>
 
     <!-- Operator buttons -->
     <div class="operators">
 
-        <button onclick="appendValue('+')">+</button>
-        <button onclick="appendValue('-')">-</button>
-        <button onclick="appendValue('/')">/</button>
-        <button onclick="appendValue('*')">*</button>
+    <button onclick="appendValue('+')">+</button>
+    <button onclick="appendValue('-')">-</button>
+    <button onclick="appendValue('/')">/</button>
+    <button onclick="appendValue('*')">*</button>
+    <button onclick="appendValue('%')">%</button>
+    <button onclick="appendValue('^')">^</button>
+    <button onclick="decimal()">.</button>
+    <button onclick="squareRoot()">√</button>
+    <button onclick="decimalToFraction()">a/b</button>
+    <button onclick="appendValue('(')">(</button>
+    <button onclick="appendValue(')')">)</button>
+    <button onclick="combinationButton()">C</button>
 
-        <button onclick="clearDisplay()">AC</button>
+        <button onclick="appendValue('Q')">Q</button>
+    <!-- history action -->    
+        <button onclick="clearedHistory()">cleared</button>
+        <button onclick="saveHistory()">saved</button>
+        <button onclick="retrievehistory()">retrieved</button>
+        <button onclick="previewHistory()">preview</button>
+    <!-- clear btn actions -->
+        <button class="btn_ac" onclick="acButton()">AC</button>
+        <button class="del_btn" onclick="deleteLast()">DEL</button>
 
-        <button onclick="appendValue('%')">%</button>
-        <button onclick="appendValue('^')">^</button>
-
-        <button onclick="decimal()">.</button>
-
-        <!-- Square Root -->
-        <button onclick="squareRootValue()">√</button>
-
-        <button onclick="decimalToFraction()">a/b</button>
-
-        <button onclick="appendValue('(')">(</button>
-        <button onclick="appendValue(')')">)</button>
-
-        <!-- Combination -->
-        <button onclick="appendValue('C')">C</button>
-
-        <!-- Quadratic Equation Buttons -->
-        <button onclick="appendValue('x')">x</button>
-
-        <button onclick="appendValue('x²')">x²</button>
-
-        <button onclick="appendValue('eq')">eq</button>
-
-    </div>
+</div>
 
 </div>
 
 <!-- Links the JavaScript file -->
-<script src="script.js"></script>
+<script src="script.js?v=4"></script>
 
 </body>
+
+
 
 </html>
