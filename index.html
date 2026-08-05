@@ -18,7 +18,7 @@
 
     <!-- History panel shown by the preview button -->
     <div id="history-panel" class="history-panel"></div>
-    
+
     <div class="number-section">
 
         <button onclick="appendValue('0')">0</button>
@@ -45,30 +45,43 @@
     <!-- Operator buttons -->
     <div class="operators">
 
-    <button onclick="appendValue('+')">+</button>
-    <button onclick="appendValue('-')">-</button>
-    <button onclick="appendValue('/')">/</button>
-    <button onclick="appendValue('*')">*</button>
-    <button onclick="appendValue('%')">%</button>
-    <button onclick="appendValue('^')">^</button>
-    <button onclick="decimal()">.</button>
-    <button onclick="squareRoot()">√</button>
-    <button onclick="decimalToFraction()">a/b</button>
-    <button onclick="appendValue('(')">(</button>
-    <button onclick="appendValue(')')">)</button>
-    <button onclick="combinationButton()">C</button>
+        <button onclick="appendValue('+')">+</button>
+        <button onclick="appendValue('-')">-</button>
+        <button onclick="appendValue('/')">/</button>
+        <button onclick="appendValue('*')">*</button>
 
-        <button onclick="appendValue('Q')">Q</button>
-    <!-- history action -->    
+        <!-- clear btn actions -->
+        <button class="del_btn" onclick="deleteLast()">DEL</button>
+        <button onclick="clearDisplay()">AC</button>
+
+        <button onclick="appendValue('%')">%</button>
+        <button onclick="appendValue('^')">^</button>
+
+        <button onclick="decimal()">.</button>
+
+        <!-- Square Root -->
+        <button onclick="squareRootValue()">√</button>
+
+        <button onclick="decimalToFraction()">a/b</button>
+
+        <button onclick="appendValue('(')">(</button>
+        <button onclick="appendValue(')')">)</button>
+
+        <!-- Combination -->
+        <button onclick="combinationButton()">C</button>
+
+        <!-- Quadratic Equation Buttons -->
+        <button onclick="appendValue('x')">x</button>
+        <button onclick="appendValue('x²')">x²</button>
+        <button onclick="appendValue('eq')">eq</button>
+
+        <!-- history action -->
         <button onclick="clearedHistory()">cleared</button>
         <button onclick="saveHistory()">saved</button>
         <button onclick="retrievehistory()">retrieved</button>
         <button onclick="previewHistory()">preview</button>
-    <!-- clear btn actions -->
-        <button class="btn_ac" onclick="acButton()">AC</button>
-        <button class="del_btn" onclick="deleteLast()">DEL</button>
 
-</div>
+    </div>
 
 </div>
 
@@ -76,7 +89,5 @@
 <script src="script.js?v=4"></script>
 
 </body>
-
-
 
 </html>
