@@ -358,7 +358,31 @@ if (eqPosition !== -1) {
         display.value = answer;
         return;
     }
+// -------------------------
+// Nth Root (n√m)
+// Example: 3√8
+// -------------------------
 
+if (expression.includes("√")) {
+
+    let parts = expression.split("√");
+
+    let root = Number(parts[0]);
+    let number = Number(parts[1]);
+
+
+    if (isNaN(root) || isNaN(number)) {
+
+        display.value = "Error";
+        return;
+
+    }
+
+
+    display.value = nthRoot(root, number);
+    return;
+
+}
     // -------------------------
     // Normal Expression
     // -------------------------
@@ -618,6 +642,67 @@ function squareRoot(number) {
     }
 
     return (low + high) / 2;
+
+}
+// =========================================
+// NTH ROOT (n√m) BINARY SEARCH
+// =========================================
+
+function nthRoot(root, number) {
+
+    if (root <= 0) {
+        return "Error";
+    }
+
+    if (number < 0 && root % 2 === 0) {
+        return "Error";
+    }
+
+    let negative = false;
+
+    if (number < 0) {
+        negative = true;
+        number = -number;
+    }
+
+
+    let low = 0;
+    let high = number;
+    let middle;
+
+
+    while ((high - low) > 0.000001) {
+
+        middle = (low + high) / 2;
+
+        let result = 1;
+
+
+        // Calculate middle^root without Math.pow()
+        for (let i = 0; i < root; i++) {
+            result = result * middle;
+        }
+
+
+        if (Math.abs(result - number) < 0.000001) {
+
+            return negative ? -middle : middle;
+
+        }
+
+
+        if (result < number) {
+            low = middle;
+        } else {
+            high = middle;
+        }
+
+    }
+
+
+    let answer = (low + high) / 2;
+
+    return negative ? -answer : answer;
 
 }
 
