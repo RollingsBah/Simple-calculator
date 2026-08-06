@@ -100,6 +100,7 @@ button:active{
     height:65px;
     background:#ff9800;
     color:#fff;
+    font-size:18px;
 }
 
 .operators button:hover{
