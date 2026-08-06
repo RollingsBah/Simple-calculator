@@ -27,8 +27,8 @@ function clearMessage() {
 
 // Adds values to the display
 function appendValue(value) {
-  // only allow known calculator characters (prevents stray letters like Q)
-  if (!/^[0-9+\-*/%^().]$/.test(value)) return;
+  // only allow known calculator characters (x/X act as multiply)
+  if (!/^[0-9+\-*/%^().xX]$/.test(value)) return;
 
   if (messageShowing || display.value === "Error") {
     display.value = "";
@@ -58,7 +58,13 @@ function tokenizeExpression(expression) {
 
       tokens.push(Number(number));
     } else if (char === "x" || char === "X") {
-      tokens.push("*");
+      // "x²" is shorthand for "power of 2", otherwise x is multiply
+      if (expression[i + 1] === "²") {
+        i++;
+        tokens.push("^", 2);
+      } else {
+        tokens.push("*");
+      }
     } else if ("+-*/%^()".includes(char)) {
       tokens.push(char);
     } else {
@@ -205,6 +211,23 @@ function calculate() {
     return;
   }
 
+  // Evaluate a quadratic like "2x²-4x+5eq1" by plugging in x=1
+  const eqMatch = expression.match(/^([+-]?\d*\.?\d+)x²([+-]?\d*\.?\d+)x([+-]?\d*\.?\d+)eq([+-]?\d*\.?\d+)$/i);
+  if (eqMatch) {
+    const a = Number(eqMatch[1]);
+    const b = Number(eqMatch[2]);
+    const c = Number(eqMatch[3]);
+    const xVal = Number(eqMatch[4]);
+
+    const formatted = formatResult(a * xVal * xVal + b * xVal + c);
+    display.value = formatted;
+
+    if (formatted !== "Error") {
+      saveToHistory(expression + " = " + formatted);
+    }
+    return;
+  }
+
   let result;
   try {
     result = evaluateExpression(expression);
@@ -244,6 +267,26 @@ function squareRoot() {
   } else {
     display.value = formatResult(Math.sqrt(number));
   }
+}
+
+// Inserts the x² token for building quadratic expressions
+function appendSquare() {
+  if (messageShowing || display.value === "Error") {
+    display.value = "";
+    messageShowing = false;
+  }
+  display.value += "x²";
+  hideHistoryPanel();
+}
+
+// Inserts the "eq" text into the display
+function appendEq() {
+  if (messageShowing || display.value === "Error") {
+    display.value = "";
+    messageShowing = false;
+  }
+  display.value += "eq";
+  hideHistoryPanel();
 }
 
 // Greatest Common Divisor
@@ -462,5 +505,7 @@ document.addEventListener("keydown", (event) => {
     decimal();
   } else if (event.key === "c" || event.key === "C") {
     combinationButton();
+  } else if (event.key === "x" || event.key === "X") {
+    appendValue("x");
   }
 });
