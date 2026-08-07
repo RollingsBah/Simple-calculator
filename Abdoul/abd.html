@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <link rel="stylesheet" href="abd.css">
+
+</head>
+<body>
+    
+    <div class="header">
+        <p>Abd<span id="report">Report</span></p>
+        <div id="menu">
+            <img id="menu-img" src="images/menu.svg" alt="">
+        </div>
+        <div id="cancel">
+            <img id="menu-img" src="images/cancel.png" alt="">
+        </div>
+    </div>
+    <div id="center">
+        <ul type="none">
+            <li><a href="#cards">How it works ?</a></li>
+            <li><a href="#algo">algorithm</a></li>
+            <li><a href="#concept">conception</a></li>
+            <li><a href="#calculator">Calculator</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <h1>How It works ?</h1>
+        <div class="cards" id="cards">
+            <div class="card">
+                <h3>Display Selection</h3>
+                <ul type="none">
+                    <li>
+                        <span>display.value</span>: represents whatever appears on the calculator screen.
+                    </li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Displaying Values</h3>
+                <ul type="none">
+                    <li>
+                        <span>appendValue()</span>: This function is called whenever a calculator button is pressed.
+                    </li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Tokenizing the Expression</h3>
+                <ul type="none">
+                    <li>
+                        <span>tokenizeExpression()</span>:  It converts a text expression into understandable pieces called tokens.
+                    </li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Reading Every Character</h3>
+                <ul type="none">
+                    <li>
+                        <span>for (let i = 0; i < expression.length; i++)</span>:  The loop examines the expression one character at a time.
+                    </li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Reading Numbers</h3>
+                <ul type="none">
+                    <li>
+                        <span>if (/\s/.test(char)) { continue;}</span>:  Detects numbers. It also supports decimals.
+                    </li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Multiplication Symbol</h3>
+                <ul type="none">
+                    <li>
+                        <span>else if (char === "x")</span>:  The calculator displays X but JavaScript uses *</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Reading Operators</h3>
+                <ul type="none">
+                    <li>
+                        <span>"+-*/()".includes(char)</span>:  Recognizes +, -, *, /, (, ) and stores them.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Invalid Characters</h3>
+                <ul type="none">
+                    <li>
+                        <span>throw new Error("Invalid expression");</span>:  Stops the program if the user enters something unexpected.</li>
+                        </ul>
+            </div>
+            <div class="card">
+                <h3>Evaluating the Expression</h3>
+                <ul type="none">
+                    <li>
+                        <span>evaluateExpression(expression);</span>:  This is the calculator's brain.</li>
+                        </ul>
+            </div>
+            <div class="card">
+                <h3>Tokenization First</h3>
+                <ul type="none">
+                    <li>
+                        <span>const tokens = tokenizeExpression(expression);</span>:  This is the calculator's brain, 12+5*3 becomes [12, "+", 5, "*", 3]</li>
+                        </ul>
+            </div>
+            <div class="card">
+                <h3>Current Position</h3>
+                <ul type="none">
+                    <li>
+                        <span>let index = 0;</span>:  Keeps track of where we are in the token list.</li>
+                        </ul>
+            </div>
+            <div class="card">
+                <h3>Peek Function</h3>
+                <ul type="none">
+                    <li>
+                        <span>function peek() { return tokens[index]; }</span>:  Looks at the current token without moving.</li>
+                        </ul>
+            </div>
+            <div class="card">
+                <h3>Advance Function</h3>
+                <ul type="none">
+                    <li>
+                        <span>function advance() { return tokens[index++]; }</span>:  Returns the current token and moves to the next one.</li>
+                        </ul>
+            </div>
+            <div class="card">
+                <h3>Addition and Substraction</h3>
+                <ul type="none">
+                    <li>
+                        <span>parseExpression()</span>:  Handles + and -</li>
+                        </ul>
+            </div>
+            <div class="card">
+                <h3>Multiplication and Division</h3>
+                <ul type="none">
+                    <li>
+                        <span>parseFactor()</span>:  Handles * and /</li>
+                        </ul>
+            </div>
+            <div class="card">
+                <h3>Recognizes brackets</h3>
+                <ul type="none">
+                    <li>
+                        <span>parseFactor()</span>: Handles the smallest units. it recognizes numbers, negative numbers, positive numbers, parentheses
+                    </li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Parentheses</h3>
+                <ul type="none">
+                    <li>
+                        <span>( )</span>: It enters the parentheses, solves the expression inside, checks for the closing ).
+                    </li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Final Check</h3>
+                <ul type="none">
+                    <li>
+                        <span>if (peek() !== undefined)</span>: Ensures every token has been processed.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    <div class="algo" id="algo">
+        <h2>Algorithm</h2>
+        <ol>
+                                <li>START</li>
+                <li>Get the mathematical expression from the display.</li>
+
+                <li> Convert the expression into tokens:
+                    <ul>
+                    <li>Ignore spaces.</li>
+                    <li>Read complete numbers (including decimals).</li>
+                    <li>Convert 'x' to '*'.</li>
+                    <li>Store operators and parentheses.</li>
+                    <li>If an invalid character is found, stop with an error.</li>
+                    </ul>
+                </li>
+                <li>Evaluate the tokens using recursive descent parsing:
+                    <ol type="a">
+                    <li>Parse factors:
+                            <ul type="dot">
+                                <li>Number</li>
+                                <li>Unary + or -</li>
+                                <li>Parenthesized expression</li>
+                            </ul>
+                        </li>
+                    <li> Parse terms:
+                        <ul>
+                            <li>Perform multiplication and division.</li>
+                            <li>If dividing by zero, report an error.</li>
+                        </ul>
+                        </li>
+                    <li>Parse expressions:
+                        <ul>
+                            <li>Perform addition and subtraction.</li>
+                        </ul>
+                        </li>
+                    </ol>
+                </li>
+                <li> Verify that all tokens were consumed.
+                    <ul>
+                    <li>If extra tokens remain, report an invalid expression.</li>
+                    </ul>
+                </li>
+
+                <li>Return the computed result.</li>
+
+                <li>END</li>
+        </ol>
+    </div>
+    <div class="concept" id="concept">
+        <h2>Conception</h2>
+        <p>The calculator is designed in three logical layers, each with a single responsibility:</p>
+        <ol>
+            <li><em>User Interface:</em> Displays the expression and collects button presses (<span>appendValue()</span> updates the display).</li>
+            <li><em>Lexical Analysis (Tokenization Layer):</em> Converts the raw string (for example, <span>"12+5x3"</span>) into structured tokens (<span>[12, "+", 5, "*", 3]</span>). This makes the expression easier to process.</li>
+            <li><em>Parsing and Evaluation (Computation Layer):</em> Uses a recursive descent parser with three levels of precedence:
+                <ul>
+                    <li><span>parseFactor()</span> handles numbers, unary signs, and parentheses.</li>
+                    <li><span>parseTerm()</span> handles multiplication and division.</li>
+                    <li><span>parseExpression()</span> handles addition and subtraction.</li>
+                </ul>
+            </li>
+        </ol>
+        <p>
+        This layered design respects the order of operations (BODMAS/PEMDAS), avoids the security risks of <span>eval()</span>, makes the code easier to maintain,
+        and allows future extensions such as adding exponentiation (^), modulus (%), or mathematical functions <span>(sqrt, sin, cos)</span> without redesigning the entire calculator.</p>
+    </div>
+    
+    <!-- Main calculator container -->
+     <div class="cal" id="calculator">
+<div class="calculator">
+    
+    <div class="number-section">
+
+        <button onclick="appendValue('0')">0</button>
+        <button onclick="appendValue('3')">3</button>
+        <button onclick="appendValue('6')">6</button>
+
+        <button onclick="appendValue('9')">9</button>
+
+        <button onclick="appendValue('1')">1</button>
+        <button onclick="appendValue('4')">4</button>
+        <button onclick="appendValue('7')">7</button>
+
+        <!-- Calculates the expression -->
+        <button class="equal" onclick="calculate()">=</button>
+
+        <button onclick="appendValue('2')">2</button>
+        <button onclick="appendValue('5')">5</button>
+        <button onclick="appendValue('8')">8</button>
+
+    </div>
+
+    <!-- Displays the input and result -->
+    <input type="text" id="display" readonly>
+
+    <!-- Operator buttons -->
+    <div class="operators">
+
+    <button onclick="appendValue('+')">+</button>
+    <button onclick="appendValue('-')">-</button>
+    <button onclick="appendValue('/')">/</button>
+    <button onclick="appendValue('*')">*</button>
+    <button onclick="appendValue('(')">(</button>
+    <button onclick="appendValue(')')">)</button>
+    
+</div>
+        
+
+    </div>
+
+</div>
+<img src="https://api.qrserver.com/v1/create-qr-code/?data=HelloWorld&amp;size=100x100" alt="" title="" />
+</div>
+    <script src="abd.js"></script>
+</body>
+</html>
