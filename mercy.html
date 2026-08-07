@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator_webpage</title>
+    <link rel="stylesheet" href="mercy.css">
+</head>
+<body>
+     <!-- NAVIGATION  -->
+<header class="nav">
+    <div class="nav-inner">
+       <marquee><a href="#top" class="brand">Calc<span>Lab</span></a></marquee> 
+
+        <nav class="nav-links">
+            <a href="#History">History</a>
+            <a href="#Algorithm">Algorithm</a>
+            <a href="#Conception">Conception</a>
+            <a href="#Screenshots">Screenshots</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ======= HERO ======= -->
+<section class="hero" id="top">
+    <div class="hero-badge">Scientific Calculator</div>
+    <h1>How the Calculator <span>Works</span></h1>
+    <p>The <strong>CALCULATOR HISTORY</strong> 
+        feature works by recording every calculation performed by the user and storing it in a 
+        <strong> history list</strong>. This allows users to 
+        <strong>review</strong>, <strong>retrieve</strong>, and 
+        <strong>manage</strong> previous calculations whenever needed.</p>
+   <div class="hero-actions">
+        <a href="#history" class="btn btn-primary">Explore History</a>
+        <a href="#algorithm" class="btn btn-ghost">See the Algorithm</a>
+    </div>
+</section>
+
+
+<!-- ======= HISTORY SECTION ======= -->
+<section class="section" id="history">
+    <div class="section-head">
+        <h2>A. History System</h2>
+        <p><strong> Calculator History </strong>is a feature that 
+            <strong>records </strong>and <strong>manages</strong> 
+            the calculations performed by a user. It allows users to 
+            <strong>save</strong>, calculations for <strong>future reference and reuse</strong> <strong>view</strong>, <strong>retrieve</strong>, past calculations for re-use and 
+            <strong>delete</strong> specfic history records, <strong>AC</strong>  Clear all functions to reset the calculator's current input and operations.
+        </p>
+    </div>
+    <!-- history features -->
+    <div><h3>BASE ON THE FEATURES</h3></div>
+
+    <div class="cards">
+        <article class="card">
+            <span class="card-icon">💾</span>
+            <h3>1 SAVED</h3>
+            <p>Pushes the current display value onto the history list and
+            immediately persists it with <code>localStorage.setItem()</code>.</p>
+        </article>
+
+        
+        <article class="card">
+            <span class="card-icon">🔁</span>
+            <h3>2 RETRIEVE</h3>
+            <p>Reads the most recent entry, splits it on <code>" = "</code>, and
+            places just the result back onto the display.</p>
+        </article>
+
+        <article class="card">
+            <span class="card-icon">📋</span>
+            <h3>3 PREVIEW</h3>
+            <p>Reverses the list so the newest calculation is on top, numbers each
+            row, and renders it into the on-screen history panel.</p>           
+        </article>
+
+        <article class="card">
+            <span class="card-icon">🗑️</span>
+            <h3>4 CLEARED</h3>
+            <p>Empties the array in memory and removes the saved copy with
+            <code>localStorage.removeItem()</code>.</p>                
+        </article>
+
+        <article class="card">
+            <h3>5 DELETE</h3>
+            <p>Delete Last Character is a calculator function 
+            that removes the most recently entered digit, operator, or 
+            character from the current input without clearing the entire expression.</p>            
+        </article>
+
+        <article class="card">
+            <h3>6 AC</h3>
+            <p>AC (All Clear) is a calculator function that clears all current inputs, operators, results, and temporary calculation data, returning the calculator to its initial state.
+        </article>
+    </div>
+    
+    <div class="demo" id="history-demo">
+        <div class="demo-tools">
+            <h3>Live History Demo</h3>
+            <div class="demo-buttons">
+                <button class="btn btn-small" onclick="demoSave()">saved</button>
+                <button class="btn btn-small" onclick="demoRetrieve()">retrieved</button>
+                <button class="btn btn-small" onclick="demoPreview()">preview</button>
+                <button class="btn btn-small" onclick="demoDelete()">Delete</button>
+                <button class="btn btn-small btn-danger" onclick="demoClear()">cleared</button>
+            </div>
+        </div>
+        <div class="demo-stage">
+            <div class="demo-screen" id="demo-screen">5 + 3</div>
+            <div class="demo-panel" id="demo-panel"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ======= ALGORITHM SECTION ======= -->
+<section class="section" id="algorithm">
+    <div class="section-head">
+        <h2>B. The Algorithm Evaluation</h2>
+        <p>An <strong> algorithm</strong>  is a <strong> step-by-step procedure</strong>  used to solve a problem or perform a task. 
+            In a calculator, the algorithm defines how the calculator <strong> responds</strong>  when 
+            the user performs calculations and uses the history management buttons.            
+        </p>
+    </div>
+    <!-- ALGORITHM FEATURES -->
+     <div class="cards">
+        <article class="card">            
+            <h3>1 SAVED History Algorithm</h3>
+            <h4>Steps</h4>
+            <p>
+                <ol>
+                    <li>User enters a mathematical expression.</li>
+                    <li>User presses the = button.</li>
+                    <li>Calculator evaluates the expression.</li>
+                    <li>Calculator generates the result.</li>
+                    <li>Create a history record containing:</li>
+                    <ul>
+                        <li>Expression</li>
+                        <li>Result</li>
+                    </ul>
+                    <li>Save the record in the history list.</li>
+                    <li>Display the result.</li>
+                </ol>
+            </p>
+        </article>
+        <article class="card">            
+            <h3>2 RETRIEVE History Algorithm</h3>
+            <h4>Steps</h4>
+            <p>
+                <ol>
+                    <li>User clicks Retrieve History.</li>
+                    <li>Calculator displays available history records.</li>
+                    <li>User selects a history item.</li>
+                    <li>Calculator retrieves the selected record.</li>
+                    <li>Display the expression or result on the calculator</li>
+                    <li>Allow the user to continue calculations.</li>
+                </ol>
+            </p>
+        </article>
+
+        <article class="card">            
+            <h3>3 PREVIEW History Algorithm</h3>
+            <h4>Steps</h4>
+            <p>
+                <ol>
+                    <li>User clicks Preview History.</li>
+                    <li>Calculator checks whether history records exist.</li>
+                    <li>If records exist:</li>
+                    <ul>
+                        <li>Display all saved calculations.</li>
+                    </ul>
+                    <li>Otherwise:</li>
+                    <li>Display "No History Available".</li>
+                </ol>
+            </p>
+        </article>
+
+        <article class="card">            
+            <h3>4 CLEAR History Algorithm</h3>
+            <h4>Steps</h4>
+            <p>
+                <ol>
+                    <li>User clicks Clear History.</li>
+                    <li>Calculator asks for confirmation (optional).</li>
+                    <li>Delete all history records.</li>
+                    <li>Empty the history list.</li>
+                    <li>Display "History Cleared".</li>
+                </ol>
+            </p>
+        </article>
+        <article class="card">            
+            <h3>5 DELETE History Algorithm</h3>
+            <h4>Steps</h4>
+            <p>
+                <ol>
+                    <li>Display "History Cleared".</li>
+                    <li>Read the current display value.</li>
+                    <li>Check if the display is not empty.</li>
+                    <li>Remove the last character.</li>
+                    <li>Update the display.</li>
+                    <li>Display the modified expression.</li>
+                </ol>
+            </p>
+        </article>
+        <article class="card">            
+            <h3>6 AC History Algorithm</h3>
+            <h4>Steps</h4>
+            <p>
+                <ol>
+                    <li>User presses AC.</li>
+                    <li>Clear the current input.</li>
+                    <li>Clear temporary variables and operators.</li>
+                    <li>Reset the display to 0.</li>
+                    <li>Keep saved history unchanged unless programmed otherwise.</li>
+                </ol>
+            </p>
+        </article>
+        <div >
+        <h2>OVERALL CALCULATOR ALGORITHM</h2>
+
+     </div>
+        <!-- <h2>OVERALL CALCULATOR ALGORITHM</h2> -->
+        <div class="Algorithm">
+        <div class="Algorithm-bar"> algorithm</div>
+        <pre><code>
+    START
+
+Input numbers and operators
+
+IF "=" is pressed THEN
+    Calculate result
+    Save expression and result to history
+    Display result
+    END IF
+
+IF "Preview History" is pressed THEN
+ Display all saved history records
+    END IF
+
+IF "Retrieve History" is pressed THEN
+    Select history record
+    Display selected record
+    END IF
+
+IF "Clear History" is pressed THEN
+    Delete all history records
+    END IF
+
+IF "DEL" is pressed THEN
+    Remove last character from display
+
+    END IF
+
+    END
+        </code></pre>
+    </div>
+</section>
+
+
+<!-- ======= CONCEPTION ======= -->
+<section class="section" id="Conception">
+    <div class="section-head">
+        <h2>C. CONCEPTION</h2>
+        <p>The conception of the calculator refers to the design idea and functional structure of the 
+            calculator system. It is based on providing users with not only basic 
+            arithmetic operations but also features for storing, managing, and reusing previous calculations.
+
+This calculator is conceived as a tool that performs mathematical calculations while maintaining a 
+history of user activities. The system automatically records completed calculations and provides options to 
+manage these records through various history functions.</p>
+
+<h2>Main Components of the Conception</h2>
+<!-- Steps -->
+    <div class="steps">
+        <div class="step">
+            <span class="step-num">A</span>
+            <div>
+<h3>Save History</h3><p>
+<p>Automatically stores each completed calculation and its result.</p>
+<p>Ensures that past calculations are not lost after new operations are performed.</p>
+ </div>
+        </div>
+
+<div class="steps">
+        <div class="step">
+            <span class="step-num">B</span>
+            <div>
+<h3>Preview History</h3>
+<p>Allows users to view all previously saved calculations.
+Provides a quick way to review past operations and results.</p>
+ </div>
+        </div>
+
+<div class="steps">
+        <div class="step">
+            <span class="step-num">C</span>
+            <div>
+<h3>Retrieve History</h3>
+<p>Enables users to select and reload a saved calculation.
+Supports reuse of previous results without re-entering data.</p>
+            </div>
+        </div>
+
+<div class="steps">
+        <div class="step">
+            <span class="step-num">D</span>
+            <div>
+<h3>Delete (DEL)</h3>
+<p>Removes the last character entered in the current expression.
+Helps users correct typing mistakes without clearing the entire calculation.</p>
+ </div>
+        </div>
+
+<div class="steps">
+        <div class="step">
+            <span class="step-num">E</span>
+            <div>
+<h3>Clear History</h3>
+<p>Deletes all saved calculation records from the history storage.
+Allows users to start with an empty history list when needed.</p>
+ </div>
+        </div>
+
+<div class="steps">
+        <div class="step">
+            <span class="step-num">F</span>
+            <div>
+    <h3>AC (All Clear)</h3>
+    <p>Clears the entire current input, operators, and temporary values.
+    Resets the calculator to its initial state without affecting saved 
+    history unless specifically programmed to do so.</p>
+    </div>
+            </div>
+    </div>    
+</section>
+<div>
+<h2>Overall Conception</h2>
+    <p>
+    The calculator is conceived as an interactive mathematical tool that combines calculation and history management capabilities. It performs arithmetic operations, stores completed calculations, allows users to preview and retrieve past records, provides editing through the Delete button, supports history removal through Clear History, and resets current operations through the AC button. This design improves efficiency, accuracy, and user convenience by ensuring that calculations can be saved, reviewed, reused, and managed effectively. 
+    </p> 
+    </div>
+
+        <!-- SCREENSHOTS -->
+<section class="section" id="screenshots">
+    <div class="section-head">
+        <h2>SCREENSHOTS</h2>
+        <!-- Projects Section -->
+    <section class="projects">
+        <h2>My Recent Screenshots</h2>
+
+        <div class="project-grid">
+
+            <div class="project-card">
+                <img src="image/Image1.jpeg">
+                <h3>operation</h3>
+                
+            </div>
+
+            <div class="project-card">
+                <img src="image/Image4.jpeg">
+                <h3>result</h3>
+                
+            </div>
+
+            <div class="project-card">
+                <img src="image/Image 3.jpeg">
+                <h3>save</h3>
+                
+            </div>
+
+            <div class="project-card">
+                <img src="image/Image8.jpeg">
+                <h3>preview</h3>
+                
+            </div>
+
+            <div class="project-card">
+                <img src="image/Image6.jpeg">
+                <h3>cleared</h3>
+
+                <div class="project-card">
+                <img src="image/Image7.jpeg">
+                <h3>cleared_preview</h3>
+                
+            </div>
+                
+            </div>
+
+        </div>
+
+    </section>
+    
+    
+
+</body>
+</html>
