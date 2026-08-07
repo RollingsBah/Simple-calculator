@@ -1,293 +1,218 @@
-/* =========================================
-   GENERAL SETTINGS
-========================================= */
-
+<<<<<<< HEAD
+/* Reset default browser styles */
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
 }
-html{
-    scroll-behavior:smooth;
-}
+
+/* Center the calculator on the page */
 body{
-    font-family:Arial, sans-serif;
-    background:#f5f7fa;
-    color:#1f2937;
-    line-height:1.7;
-}
-/* =========================================
-   CONTAINER
-========================================= */
-
-.container{
-    width:90%;
-    max-width:1100px;
-    margin:auto;
-}
-/* =========================================
-   NAVIGATION BAR
-========================================= */
-nav{
-    background:#1f3a93;
-    color:white;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 60px;
-    position:sticky;
-    top:0;
-    z-index:1000;
-}
-.logo h2{
-   font-size:24px;
-}
-nav ul{
-    list-style:none;
-    display:flex;
-    gap:25px;
-}
-nav ul li a{
-    color:white;
-    text-decoration:none;
-    font-weight:500;
-    transition:0.3s;
-}
-nav ul li a:hover{
-    color:orange;
-}
-/* =========================================
-   HERO SECTION
-========================================= */
-
-header{
-    min-height:90vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    text-align:center;
-    background:
-    linear-gradient(
-    rgba(31,58,147,0.9),
-    rgba(31,58,147,0.9)
-    )
+    height:100vh;
+    background:linear-gradient(135deg, #1e3c72, #2a5298);
 }
 
-.hero-content{
-    width:80%;
-}
-.badge{
-    background:white;
-    color:#1f3a93;
-    padding:8px 20px;
-    border-radius:20px;
-    font-size:14px;
-}
-.hero-content h1{
-    font-size:48px;
-    margin:25px 0;
-}
-.hero-content h2{
-    font-size:25px;
-    font-weight:400;
-}
-.hero-content p{
-    margin:25px auto;
-    max-width:800px;
-    font-size:18px;
-}
-.hero-buttons{
-    margin-top:30px;
-}
-.btn,
-.btn-outline{
-    display:inline-block;
-    padding:12px 25px;
-    margin:10px;
-    border-radius:30px;
-    text-decoration:none;
-    font-weight:bold;
-}
-.btn{
-    background:#2563eb;
-    color:white;
-}
-.btn-outline{
-    border:2px solid white;
-    color:white;
-}
-/* =========================================
-   SECTIONS
-========================================= */
-section{
-    padding:70px 0;
-}
-section h2{
-    text-align:center;
-    color:#1f3a93;
-    font-size:35px;
-    margin-bottom:30px;
-}
-section p{
-    margin-bottom:15px;
-}
-
-/* =========================================
-   CARDS
-========================================= */
-.feature-cards{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:25px;
-    margin-top:30px;
-}
-.card,
-.info-card{
+/* Main calculator container */
+.calculator{
+    width:340px; 
     background:white;
     padding:25px;
+    border-radius:20px; 
+    box-shadow:0 12px 30px rgba(0,0,0,0.3);
+}
+
+/* Calculator display screen */
+#display{
+    width:100%;
+    height:70px;
+    margin-bottom:20px;
+    padding:15px;
+    border:none;
     border-radius:12px;
-    box-shadow:
-    0 5px 20px rgba(0,0,0,0.08);
-    margin-bottom:25px;
+    background:#f4f4f4;
+    font-size:2rem;
+    text-align:right;
+    color:#333;
+    box-shadow:inset 0 2px 8px rgba(0,0,0,0.15);
 }
-.card h3,
-.info-card h3{
-    color:#2563eb;
-    margin-bottom:15px;
+
+/* Grid layout for the number buttons */
+.number-section{
+    display:grid;
+    grid-template-columns:repeat(4,65px);
+    grid-template-rows:repeat(3,65px);
+    gap:15px;
+    justify-content:center;
+    margin-bottom:20px;
 }
-/* =========================================
-   FEATURE GRID
-========================================= */
-.grid{
+
+/* General button styling */
+button{
+    width:65px;
+    height:65px;
+    border:none;
+    border-radius:12px;
+    background:white;
+    font-size:1.5rem;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Button hover effect */
+button:hover{
+    background:#4f8ef7;
+    color:#fff;
+    transform:scale(1.05);
+}
+
+/* Button click effect */
+button:active{
+    transform:scale(0.95);
+}
+
+/* Equal button spans two rows */
+.equal{
+    grid-row:2 / span 2;
+    grid-column:4;
+    height:145px;
+    background:red;
+    color:#fff;
+}
+
+.equal:hover{
+    background:red;
+}
+
+/* Grid layout for operator buttons */
+.operators{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:20px;
+    gap:15px;
 }
-.feature-box{
+
+/* Operator button styling */
+.operators button{
+    height:65px;
+    background:#ff9800;
+    color:#fff;
+    font-size:18px;
+}
+
+.operators button:hover{
+    background:#e68900;
+=======
+/* Reset default browser styles */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* Center the calculator on the page */
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+/* Main calculator container */
+.calculator{
+    width:340px; 
     background:white;
     padding:25px;
-    text-align:center;
-    border-radius:10px;
-    box-shadow:
-    0 4px 15px rgba(0,0,0,0.08);
-    font-weight:bold;
+    border-radius:20px; 
+    box-shadow:0 12px 30px rgba(0,0,0,0.3);
 }
-/* =========================================
-   FORMULA
-========================================= */
-.formula{
-    background:#eaf4ff;
-    padding:20px;
-    text-align:center;
-    font-size:25px;
-    font-weight:bold;
-    border-left:5px solid #2563eb;
-    margin:20px 0;
-}
-/* =========================================
-   EXAMPLE BOX
-========================================= */
-.example{
-    background:#f1f5f9;
-    padding:20px;
-    border-radius:10px;
-    font-weight:bold;
-}
-/* =========================================
-   FLOWCHART
-========================================= */
-.flowchart{
-    text-align:center;
-}
-.flowchart div{
-    background:black;
-    color:white;
-    display:inline-block;
-    padding:15px 30px;
-    border-radius:8px;
-    margin:10px;
-}
-.flowchart span{
-    display:block;
-    font-size:25px;
-}
-/* =========================================
-   TABLE
-========================================= */
-table{
+
+/* Calculator display screen */
+#display{
     width:100%;
-    border-collapse:collapse;
-    background:white;
-    margin-top:25px;
-}
-table th{
-    background:white;
-    color:white;
+    height:70px;
+    margin-bottom:20px;
     padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#f4f4f4;
+    font-size:2rem;
+    text-align:right;
+    color:#333;
+    box-shadow:inset 0 2px 8px rgba(0,0,0,0.15);
 }
-table td{
-    padding:15px;
-    border:1px solid black;
-    text-align:center;
+
+/* Grid layout for the number buttons */
+.number-section{
+    display:grid;
+    grid-template-columns:repeat(4,65px);
+    grid-template-rows:repeat(3,65px);
+    gap:15px;
+    justify-content:center;
+    margin-bottom:20px;
 }
-.success{
-    color:#16a34a;
+
+/* General button styling */
+button{
+    width:65px;
+    height:65px;
+    border:none;
+    border-radius:12px;
+    background:white;
+    font-size:1.5rem;
     font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
 }
-/* =========================================
-   FOOTER
-========================================= */
-footer{
-    background:#1f3a93;
-    color:white;
-    text-align:center;
-    padding:30px;
+
+/* Button hover effect */
+button:hover{
+    background:#4f8ef7;
+    color:#fff;
+    transform:scale(1.05);
 }
-/* =========================================
-   RESPONSIVE DESIGN
-========================================= */
-@media(max-width:900px){
-    nav{
-        flex-direction:column;
-    }
-    nav ul{
-        flex-direction:column;
-        margin-top:20px;
-        text-align:center;
-    }
-    .feature-cards{
-        grid-template-columns:1fr;
-    }
-    .grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-    .hero-content h1{
-        font-size:35px;
-    }
+
+/* Button click effect */
+button:active{
+    transform:scale(0.95);
 }
-@media(max-width:500px){
-    .grid{
-        grid-template-columns:1fr;
-    }
-    .hero-content h1{
-        font-size:28px;
-    }
+
+/* Equal button spans two rows */
+.equal{
+    grid-row:2 / span 2;
+    grid-column:4;
+    height:145px;
+    background:red;
+    color:#fff;
 }
-/* =========================================
-   CALCULATOR SCREENSHOT
-========================================= */
-.calculator-display{
-    background:white;
-    padding:30px;
-    margin-top:40px;
-    border-radius:15px;
-    text-align:center;
-    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+
+.equal:hover{
+    background:red;
 }
-.calculator-image{
-    width:350px;
-    max-width:100%;
-    margin:20px auto;
-    border-radius:15px;
-    display:block;
+
+/* Grid layout for operator buttons */
+.operators{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+/* Operator button styling */
+.operators button{
+    height:65px;
+    background:#ff9800;
+    color:#fff;
+    font-size:18px;
+}
+
+.operators button:hover{
+    background:#e68900;
+>>>>>>> 490372839eda91e127163a531c45f486132a0d27
 }
