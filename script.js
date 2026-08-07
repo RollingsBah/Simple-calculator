@@ -1,3 +1,4 @@
+
 // =========================================
 // CALCULATOR DISPLAY
 // =========================================
@@ -357,7 +358,31 @@ if (eqPosition !== -1) {
         display.value = answer;
         return;
     }
+// -------------------------
+// Nth Root (n√m)
+// Example: 3√8
+// -------------------------
 
+if (expression.includes("√")) {
+
+    let parts = expression.split("√");
+
+    let root = Number(parts[0]);
+    let number = Number(parts[1]);
+
+
+    if (isNaN(root) || isNaN(number)) {
+
+        display.value = "Error";
+        return;
+
+    }
+
+
+    display.value = nthRoot(root, number);
+    return;
+
+}
     // -------------------------
     // Normal Expression
     // -------------------------
@@ -619,6 +644,67 @@ function squareRoot(number) {
     return (low + high) / 2;
 
 }
+// =========================================
+// NTH ROOT (n√m) BINARY SEARCH
+// =========================================
+
+function nthRoot(root, number) {
+
+    if (root <= 0) {
+        return "Error";
+    }
+
+    if (number < 0 && root % 2 === 0) {
+        return "Error";
+    }
+
+    let negative = false;
+
+    if (number < 0) {
+        negative = true;
+        number = -number;
+    }
+
+
+    let low = 0;
+    let high = number;
+    let middle;
+
+
+    while ((high - low) > 0.000001) {
+
+        middle = (low + high) / 2;
+
+        let result = 1;
+
+
+        // Calculate middle^root without Math.pow()
+        for (let i = 0; i < root; i++) {
+            result = result * middle;
+        }
+
+
+        if (Math.abs(result - number) < 0.000001) {
+
+            return negative ? -middle : middle;
+
+        }
+
+
+        if (result < number) {
+            low = middle;
+        } else {
+            high = middle;
+        }
+
+    }
+
+
+    let answer = (low + high) / 2;
+
+    return negative ? -answer : answer;
+
+}
 
 // =========================================
 // GREATEST COMMON DIVISOR
@@ -676,127 +762,3 @@ function decimalToFraction() {
 
 }
 
-// Tracks when a message (e.g. "History cleared!") is shown on the display
-let messageShowing = false;
-
-// Shows a temporary message on the display, optionally restoring a value
-function showMessage(text, restoreValue) {
-  messageShowing = true;
-  display.value = text;
-
-  if (restoreValue !== undefined) {
-    setTimeout(() => {
-      display.value = restoreValue;
-      messageShowing = false;
-    }, 1500);
-  }
-}
-
-
-// Clears a displayed message before the user starts typing again
-function clearMessage() {
-  if (messageShowing) {
-    display.value = "";
-    messageShowing = false;
-  }
-}
-
-// DELETE last digit
-function deleteLast() {
-  clearMessage();
-  hideHistoryPanel();
-  if (display.value.length > 1) {
-    display.value = display.value.slice(0, -1);
-  } else {
-    display.value = '';
-  }
-}
-
-// clear button
-function acButton() {
-  messageShowing = false;
-  display.value = '';
-  hideHistoryPanel();
-}
-
-
-// History actions
-let historyList = JSON.parse(localStorage.getItem('calculatorHistory')) || [];
-
-// Saves an entry to the history list
-function saveToHistory(entry) {
-  historyList.push(entry);
-  localStorage.setItem('calculatorHistory', JSON.stringify(historyList));
-}
-
-// 1.retrievehistory Retrieve the most recent saved calculation
-function retrievehistory() {
-    if (historyList.length === 0) {     //empty
-        showMessage("No history to retrieve", display.value);
-        return;
-    }
-    const lastSaved = historyList[historyList.length - 1];   //recentcalc
-    // entries look like "8-5 = 3"; pull out just the result
-    const result = lastSaved.includes(" = ") ? lastSaved.split(" = ").pop() : lastSaved;
-    display.value = result;
-}
-
-
-// 2. PREVIEW button - show all saved calculations on the display AND in the history panel
-function previewHistory() {
-    clearMessage();
-
-    const panel = document.getElementById('history-panel');
-
-    if (historyList.length === 0) {
-        if (panel) panel.classList.remove('show');
-        showMessage("No history to preview", display.value);
-        return;
-    }
-
-    const rows = historyList.slice().reverse()
-        .map((entry, index) => `${historyList.length - index}. ${entry}`);
-
-    // Always show on the main display so there is guaranteed feedback
-    showMessage(rows.join(' | '), display.value);
-
-    // Also show in the history panel when available
-    if (panel) {
-        panel.innerHTML = rows.map(row => `<div class="history-row">${row}</div>`).join('');
-        panel.classList.add('show');
-    }
-}
-
-
-// Hides the history panel when the user starts typing again
-function hideHistoryPanel() {
-    const panel = document.getElementById('history-panel');
-    if (panel) panel.classList.remove('show');
-}
-
-// 3. CLEARED button - clear the saved history
-function clearedHistory() {
-    clearMessage();
-
-    const previous = display.value;
-    historyList = [];
-    localStorage.removeItem('calculatorHistory');
-    showMessage("History cleared!", previous);
-}
-
-// save history
-function saveHistory() {
-  if (display.value === '') {
-    alert('Nothing to save');
-    return;
-  }
-
-  const previous = display.value;
-  saveToHistory(previous);
-
-  // show save confirmation message then restore previous value
-  document.getElementById('display').value = 'History saved!';
-  setTimeout(() => {
-    document.getElementById('display').value = previous;
-  }, 800);
-}
