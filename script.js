@@ -799,5 +799,4 @@ function saveHistory() {
   setTimeout(() => {
     document.getElementById('display').value = previous;
   }, 800);
->>>>>>> 490372839eda91e127163a531c45f486132a0d27
 }
