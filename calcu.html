@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calculator</title>
+<style>
+/* Reset default browser styles */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* Center the calculator on the page */
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+/* Main calculator container */
+.calculator{
+    width:340px; 
+    background:white;
+    padding:25px;
+    border-radius:20px; 
+    box-shadow:0 12px 30px rgba(0,0,0,0.3);
+}
+
+/* Calculator display screen */
+#display{
+    width:100%;
+    height:70px;
+    margin-bottom:20px;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#f4f4f4;
+    font-size:2rem;
+    text-align:right;
+    color:#333;
+    box-shadow:inset 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Grid layout for the number buttons */
+.number-section{
+    display:grid;
+    grid-template-columns:repeat(4,65px);
+    grid-template-rows:repeat(3,65px);
+    gap:15px;
+    justify-content:center;
+    margin-bottom:20px;
+}
+
+/* General button styling */
+button{
+    width:65px;
+    height:65px;
+    border:none;
+    border-radius:12px;
+    background:white;
+    font-size:1.5rem;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Button hover effect */
+button:hover{
+    background:#4f8ef7;
+    color:#fff;
+    transform:scale(1.05);
+}
+
+/* Button click effect */
+button:active{
+    transform:scale(0.95);
+}
+
+/* Equal button spans two rows */
+.equal{
+    grid-row:2 / span 2;
+    grid-column:4;
+    height:145px;
+    background:red;
+    color:#fff;
+}
+
+.equal:hover{
+    background:red;
+}
+
+/* Grid layout for operator buttons */
+.operators{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+/* Operator button styling */
+.operators button{
+    height:65px;
+    background:#ff9800;
+    color:#fff;
+}
+
+.operators button:hover{
+    background:#e68900;
+}
+</style>
+</head>
+<body>
+
+<!-- Main calculator container -->
+<div class="calculator">
+    
+    <div class="number-section">
+
+        <button onclick="appendValue('0')">0</button>
+        <button onclick="appendValue('3')">3</button>
+        <button onclick="appendValue('6')">6</button>
+
+        <button onclick="appendValue('9')">9</button>
+
+        <button onclick="appendValue('1')">1</button>
+        <button onclick="appendValue('4')">4</button>
+        <button onclick="appendValue('7')">7</button>
+
+        <!-- Calculates the expression -->
+        <button class="equal" onclick="calculate()">=</button>
+
+        <button onclick="appendValue('2')">2</button>
+        <button onclick="appendValue('5')">5</button>
+        <button onclick="appendValue('8')">8</button>
+
+    </div>
+
+    <!-- Displays the input and result -->
+    <input type="text" id="display" readonly>
+
+    <!-- Operator buttons -->
+    <div class="operators">
+
+        <button onclick="appendValue('+')">+</button>
+        <button onclick="appendValue('-')">-</button>
+        <button onclick="appendValue('/')">/</button>
+        <button onclick="appendValue('*')">x</button>
+        <button onclick="appendValue('%')">%</button>
+        <button onclick="appendValue('^')">^</button>
+
+    </div>
+
+</div>
+
+<!-- Links the JavaScript file -->
+<script>
+    // Gets the calculator display
+const display = document.getElementById("display");
+
+// Adds values to the display
+function appendValue(value){
+    display.value += value;
+}
+// Calculates the answer
+function calculate(){
+    let expression = display.value;
+
+    let operator="";
+    let operatorIndex=-1;
+
+    //find the operator using loops
+    for(let i=0; i<expression.length; i++){
+        if(expression[i] === "+" || 
+            expression[i] === "-" ||
+            expression[i] === "*" || 
+            expression[i] === "/" || 
+            expression[i] === "%" || 
+            expression[i] === "^"){
+            operator = expression[i];
+            operatorIndex = i;
+            break;
+        }
+    }
+       let first = Number(expression.substring(0, operatorIndex));
+       let second = Number(expression.substring(operatorIndex + 1));
+    // Addition
+       
+    if(operator === "+"){
+        display.value = first + second;
+    }
+    // Subtraction
+    else if(operator === "-"){
+        display.value = first - second;
+    }
+
+    // Multiplication
+    else if(operator === "*"){
+        display.value = first * second;
+    }
+    // modulus //
+     else if(operator === "%"){
+        display.value = first % second;
+     }
+     // exponent //
+      else if(operator === "^"){
+          let result = 1;
+          for(let i = 0; i < second; i++){
+              result *= first;
+          }
+          display.value = result;
+      }
+    
+     // Division
+     else if(operator === "/"){
+        display.value = first / second;
+        }
+    
+    }
+</script>
+
+</body>
+</html>
