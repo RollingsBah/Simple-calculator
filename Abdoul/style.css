@@ -1,0 +1,354 @@
+html{
+        scroll-behavior: smooth;
+ }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    margin: auto;
+    padding: 0;
+    position: relative;
+    color: white;
+    background-color: #fdecd7;
+}
+
+.header{
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 10px;
+    font-size: 1.7em;
+    background-color: #1e293b;
+    font-weight: bolder;
+}
+
+.header img{
+    width: 40px;
+    height: 40px;
+    margin: auto;
+}
+
+.header span{
+    color: #f97316;
+}
+
+#menu{
+    border: 1px solid rgb(255, 255, 255);
+}
+
+#menu:hover{
+    scale: 1.2;
+}
+
+#center{
+    position: absolute;
+    background-color: #fdecd7;
+    height: 85vh;
+    z-index: 9999;
+    margin-top: -10px;
+    text-align: center;
+    display: none;
+    justify-content: center;
+    /* min-height: 100vh; */
+    align-items: center;
+    font-weight: bolder;
+    font-size: 1.5em;
+    width: 100%;
+    color: #0f172a;
+}
+
+#center ul{
+    padding-top: 30px;
+}
+
+#center ul li{
+    padding-bottom: 70px;
+}
+
+#center ul li:hover{
+    text-decoration: underline;
+    text-decoration-color: #f97316;
+}
+
+a {
+    text-decoration: none;
+    color: #0f172a;
+}
+
+#center a:hover{
+    text-decoration: underline;
+    text-decoration-color: #f97316;
+}
+
+#cancel{
+    display: none;
+    background: #f97316;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+#cancel:hover{
+    scale: 1.2;
+}
+
+/* .content {
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid black;
+
+  animation:
+    typing 3s steps(1, end) forwards,
+    blink 0.7s infinite;
+} */
+
+/* @keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 13ch;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+} */
+
+.content{
+    text-align: center;
+    overflow-y: auto;
+    height: 85vh;
+}
+
+.cards{
+    /* background: white;
+    width: 250px; */
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    /* align-items:center; */
+
+}
+
+.card{
+    background: white;
+    width: 250px;
+    padding: 10px;
+    border-radius: 20px;
+    color: #0f172a;
+    line-height: 25px;
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
+.content h1{
+    color: #000;
+    padding: 10px;
+}
+
+.card h3{
+    padding: 20px;
+    color: #f97316;
+    font-size: 1.5em;
+}
+
+.card ul li{
+    margin: 7px;
+}
+
+.card span{
+    color: #f97316;
+    background-color: #fdecd7;
+    padding: 5px;
+    border-radius: 7px;
+    border: 2px solid #f97316;
+    font-size: 10px;
+}
+
+em{
+    color:#fb923c;
+}
+
+.algo{
+    color: white;
+    text-align: none;
+    background-color: #1e293b;
+    padding: 30px;
+    margin: 10px;
+    border-radius: 20px;
+    text-align: left;
+    line-height: 20px;
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
+.algo ul{
+    margin: 10px;
+}
+
+.algo h2{
+    margin: 10px;
+    text-align: center;
+    color: #f97316;
+}
+
+
+.concept{
+    color: white;
+    text-align: none;
+    background-color: #1e293b;
+    padding: 30px;
+    margin: 10px;
+    border-radius: 20px;
+    text-align: left;
+    line-height: 20px;
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
+.concept span{
+    color: #f97316;
+    background: #fdf1e2;
+    padding: 5px;
+    border-radius: 7px;
+    border: 2px solid #f97316;
+    font-size: 10px;
+}
+
+.concept ul li{
+    line-height: 25px;
+}
+
+.concept h2{
+    margin: 10px;
+    text-align: center;
+    color: #f97316;
+}
+
+.concept em{
+    color: #f97316;
+}
+
+/* Main calculator container */
+.calculator{
+    width:300px;
+    background:white;
+    padding:10px;
+    border-radius:20px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.3);
+    margin: auto;
+}
+
+/* Calculator display screen */
+#display{
+    width:100%;
+    height:50px;
+    margin-bottom:20px;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#f4f4f4;
+    font-size:2rem;
+    text-align:right;
+    color:#333;
+    box-shadow:inset 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Grid layout for the number buttons */
+.number-section{
+    display:grid;
+    grid-template-columns:repeat(4,65px);
+    grid-template-rows:repeat(3,65px);
+    gap:5px;
+    justify-content:center;
+    margin-bottom:20px;
+}
+
+/* General button styling */
+button{
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:12px;
+    background:white;
+    font-size:1.5rem;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Button hover effect */
+button:hover{
+    background:#4f8ef7;
+    color:#fff;
+    transform:scale(1.05);
+}
+
+/* Button click effect */
+button:active{
+    transform:scale(0.95);
+}
+
+/* Equal button spans two rows */
+.equal{
+    grid-row:2 / span 2;
+    grid-column:4;
+    height:120px;
+    background:red;
+    color:#fff;
+}
+
+.equal:hover{
+    background:red;
+}
+
+/* Grid layout for operator buttons */
+.operators{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:5px;
+}
+
+/* Operator button styling */
+.operators button{
+    height:50px;
+    background:#ff9800;
+    color:#fff;
+}
+
+.operators button:hover{
+    background:#e68900;
+}
+
+.cal{
+    background-color: #1e293b;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 10px;
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+    align-items: center;
+}
+
+@keyframes appear {
+    from{
+        opacity: 0;
+        scale: 0.5;
+    }
+    to{
+        opacity: 1;
+        scale: 1;
+    }
+}
