@@ -9,63 +9,54 @@ function appendValue(value){
 function calculate(){
     let expression = display.value;
 
+    let operator="";
+    let operatorIndex=-1;
+
+    //find the operator using loops
+    for(let i=0; i<expression.length; i++){
+        if(expression[i] === "+" || 
+            expression[i] === "-" ||
+            expression[i] === "*" || 
+            expression[i] === "/" || 
+            expression[i] === "%" || 
+            expression[i] === "^"){
+            operator = expression[i];
+            operatorIndex = i;
+            break;
+        }
+    }
+       let first = Number(expression.substring(0, operatorIndex));
+       let second = Number(expression.substring(operatorIndex + 1));
     // Addition
-    if(expression.includes("+")){
-        let numbers = expression.split("+");
-        let first = Number(numbers[0]);
-        let second = Number(numbers[1]);
+       
+    if(operator === "+"){
         display.value = first + second;
     }
     // Subtraction
-    else if(expression.includes("-")){
-        let numbers = expression.split("-");
-        let first = Number(numbers[0]);
-        let second = Number(numbers[1]);
+    else if(operator === "-"){
         display.value = first - second;
     }
 
     // Multiplication
-    else if(expression.includes("*")){
-        let numbers = expression.split("*");
-        let first = Number(numbers[0]);
-        let second = Number(numbers[1]);
+    else if(operator === "*"){
         display.value = first * second;
     }
-
     // modulus //
-     else if(expression.includes("%")){
-        let numbers = expression.split("%");
-
-        let first = Number(numbers[0]);
-        let second = Number(numbers[1]);
-
+     else if(operator === "%"){
         display.value = first % second;
      }
      // exponent //
-      else if(expression.includes("^")){
-          let numbers = expression.split("^");
-
-          let first = Number(numbers[0]);
-          let second = Number(numbers[1]);
-
-          display.value = Math.pow(first, second);
+      else if(operator === "^"){
+          let result = 1;
+          for(let i = 0; i < second; i++){
+              result *= first;
+          }
+          display.value = result;
       }
-
+    
      // Division
-     else if(expression.includes("/")){
-        let numbers = expression.split("/");
-        let first = Number(numbers[0]);
-        let second = Number(numbers[1]);
-        if(second == 0){
-            display.value = "Error";
+     else if(operator === "/"){
+        display.value = first / second;
         }
-        else{
-            display.value = first / second;
-        }
+    
     }
-
-    // Invalid expression
-    else{
-        display.value = "Error";
-    }
-}
