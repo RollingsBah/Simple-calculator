@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MODULUS AND EXPONENT</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'segoe UI', sans-serif;
+        }
+       body{
+        background: linear-gradient(135deg, #0f172e, #1e3a8a);
+        min-height: 100vh;
+        justify-content: center;
+        display: flex;
+        text-align: center;
+        padding: 30px;
+       }
+       .profile-container{
+        width: 300px; height: 400px;
+        display: flex; align-items: center;
+        justify-content: center; border-radius: 30px;
+        margin: auto; background-color: white;
+        position: relative;
+        box-shadow:  5px 10px 16px rgba(51 51 51 /5%),
+        -5px 10px 16px rgba(51 51 51 /5%);
+       }
+       .profile-container img{
+        width: 150px; height: 150px;
+        position: relative; border-radius: 50px;
+        box-shadow:  10px 0 30px rgba(0, 0, 0, 0.9),
+        0 0 30px rgba(78, 3, 255, 0.9);
+        border: 3px solid powderblue;
+        animation: roll 3s infinite ease-in-out alternate;
+        float: right;
+       }
+       .online{
+    width: 10px;
+    height: 10px;
+    background: green;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    margin: 32px 1px 1px -22px;
+}
+.logo{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+}
+       .container{
+        width: 70%;
+        max-width: 800px;
+        background: #cc6262;
+        border-radius: 20px;
+        box-shadow: 0 20 50px rgba(0, 0, 0, .25);
+        overflow: hidden;
+        position: relative;
+        right: 0;
+       }
+       header{
+        background:linear-gradient(90deg, #2563eb, #06b6d4);
+        color: #fff;
+        padding: 35px;
+       }
+       header h1{
+        font-size: 40px;
+        letter-spacing: 10px;
+       }
+       header p{
+        margin-top: 10px;
+        opacity: .9;
+       }
+    .container{
+        padding: 40px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+        gap: 25px;
+    }
+    .card{
+        background: #f8fafc;
+        border-radius: 15px;
+        padding: 25px;
+        border-left: 6px solid #2463eb;
+        transition: .3s;
+    }
+    .card:hover{
+        transform: translateY(-8px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, .25);
+    }
+    h2{
+        color: #1e3e8a;
+        margin-bottom: 15px;
+    }
+    p{
+        color: #555;
+        line-height: 1.7;
+    }
+    ol{
+        margin-left: 20px;
+        color: #444;
+        line-height: 1.9;
+    } 
+    .formula{
+        margin-top: 20px;
+        background: #2563eb;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        border-radius: 12px;
+        font-size: 22px;
+        font-weight: bold;
+    } 
+    footer{
+        background: #f1f5f9;
+        text-align: center;
+        padding: 20px;
+        color: #555;
+    }
+    @media (max-width:768px){
+        header h1{font-size:30px;
+        }
+        .content{
+            padding: 20px;
+        }
+    }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+         <img src="pic/IMG-20260204-WA0149(1).jpg" class="logo ">
+        
+    <div class="online"></div>
+    </div>
+    <div class="container">
+        <header>
+            <h1>MODULUS AND EXPONENT</h1>
+            <p>Understanding the Algorithms Behind Modulus (%) and Exponent (^)</p>
+             <img src="pic/mbongo.png" class="container">
+        </header>
+
+        <div class="content">
+            <div class="card">
+                <h2>Modulus Algorithms (%)</h2>
+
+                <p>
+                The modulus operator returns the reminder  after dividing one number by another.
+                It is commomly used to determine whether a number is even or odd and for cyclic operations.
+                </p>
+
+                <ol>
+                    <li>Start</li>
+                    <li>Input the first number (A).</li>
+                    <li>Input the second number (B).</li>
+                    <li>Divide A by B</li>
+                    <li>Return the reminder using A % B.</li>
+                    <li>Display the reminder.</li>
+                    <li>Stop.</li>
+                </ol>
+                  <div class="formula">
+                    A % B = reminder
+                  </div>
+                  </div>
+
+                         <div class="card">
+                            <h2>Exponent Algorithms (^)</h2>
+
+                            <p>
+                                The exponent opeartor raises a number (base) to the power of another number (exponent) by
+                                multiplying the base repeatedly.
+                            </p>
+                            <ol>
+                                <li>Start</li>
+                                <li>Input the base number.</li>
+                                <li>Input the exponent</li>
+                                <li>Multiply the base by itself repeatedly according to the exponent</li>
+                                <li>Display the final result</li>
+                                <li>Stop</li>
+                            </ol>
+                                <div class="formula">
+                                    Base<sup>Exponent</sup>
+                                </div>
+                         </div>
+                           </div>
+                         </div>
+            <footer>
+               &copy; Designed by ERIC 2026
+            </footer>
+            </div>
+</body>
+</html>
