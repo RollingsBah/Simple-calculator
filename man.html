@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MegaBank</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script>tailwind.config={theme:{extend:{colors:{bank:{900:'#0b1120',800:'#111827',700:'#1f2937',600:'#374151',accent:'#10b981'}}}}}</script>
+</head>
+<body class="min-h-screen bg-bank-900 text-white font-sans">
+
+<!-- Topbar -->
+<header class="flex items-center justify-between px-6 py-4 bg-bank-800 border-b border-bank-600/50 sticky top-0">
+  <div class="flex items-center gap-2 font-bold text-xl">
+    <span class="w-8 h-8 bg-bank-accent rounded-lg flex items-center justify-center text-bank-900"></span> MegaBank
+  </div>
+  <div class="flex items-center gap-2 text-sm bg-bank-700 px-3 py-1.5 rounded-full">
+    <span class="w-2 h-2 bg-bank-accent rounded-full animate-pulse"></span> Online
+  </div>
+</header>
+
+<main class="max-w-5xl mx-auto p-6 space-y-6">
+
+  <!-- Balance cards -->
+  <div class="grid sm:grid-cols-3 gap-4">
+    <div class="bg-gradient-to-br from-bank-accent to-emerald-800 rounded-2xl p-5 shadow-lg">
+      <p class="text-sm opacity-80">Total Balance</p>
+      <p class="text-3xl font-bold mt-1">FCFA 1,250,000</p>
+      <p class="text-xs mt-3 opacity-70">Available · Visa ...2431</p>
+    </div>
+    <div class="bg-bank-800 rounded-2xl p-5 border border-bank-600/50">
+      <p class="text-sm text-slate-400">Income (July)</p>
+      <p class="text-2xl font-bold text-emerald-400 mt-1">+ FCFA 480,000</p>
+    </div>
+    <div class="bg-bank-800 rounded-2xl p-5 border border-bank-600/50">
+      <p class="text-sm text-slate-400">Expenses (July)</p>
+      <p class="text-2xl font-bold text-red-400 mt-1">- FCFA 215,000</p>
+    </div>
+  </div>
+
+  <!-- Quick actions -->
+  <div class="grid grid-cols-3 sm:grid-cols-5 gap-3">
+    <button class="py-3 bg-bank-800 rounded-xl border border-bank-600/50 text-sm font-medium hover:bg-bank-700 active:scale-95 transition">&#128179; Deposit</button>
+    <button class="py-3 bg-bank-800 rounded-xl border border-bank-600/50 text-sm font-medium hover:bg-bank-700 active:scale-95 transition">&#128184; Withdraw</button>
+    <button class="py-3 bg-bank-800 rounded-xl border border-bank-600/50 text-sm font-medium hover:bg-bank-700 active:scale-95 transition">&#128225; Transfer</button>
+    <button class="py-3 bg-bank-800 rounded-xl border border-bank-600/50 text-sm font-medium hover:bg-bank-700 active:scale-95 transition">&#128179; Bills</button>
+    <button class="py-3 bg-bank-accent text-bank-900 rounded-xl text-sm font-bold hover:bg-emerald-300 active:scale-95 transition">+ Send</button>
+  </div>
+
+  <!-- Transactions -->
+  <div class="bg-bank-800 rounded-2xl border border-bank-600/50 overflow-hidden">
+    <div class="flex justify-between items-center px-5 py-4 border-b border-bank-600/50">
+      <h2 class="font-semibold">Recent Transactions</h2>
+      <button class="text-xs text-emerald-400 hover:text-emerald-300">View all &rarr;</button>
+    </div>
+    <table class="w-full text-sm">
+      <tbody class="divide-y divide-bank-600/30">
+        <tr class="hover:bg-bank-700/50">
+          <td class="px-5 py-3"><span class="w-8 h-8 inline-flex items-center justify-center bg-emerald-900/50 rounded-full">&#128666;</span> <span class="ml-2">Salary · TechCorp</span></td>
+          <td class="px-5 py-3 text-slate-400 hidden sm:table-cell">Jul 28</td>
+          <td class="px-5 py-3 text-right text-emerald-400 font-semibold">+FCFA 400,000</td>
+        </tr>
+        <tr class="hover:bg-bank-700/50">
+          <td class="px-5 py-3"><span class="w-8 h-8 inline-flex items-center justify-center bg-red-900/50 rounded-full">&#128722;</span> <span class="ml-2">Jumia Online</span></td>
+          <td class="px-5 py-3 text-slate-400 hidden sm:table-cell">Jul 27</td>
+          <td class="px-5 py-3 text-right text-red-400 font-semibold">- FCFA 45,000</td>
+        </tr>
+        <tr class="hover:bg-bank-700/50">
+          <td class="px-5 py-3"><span class="w-8 h-8 inline-flex items-center justify-center bg-blue-900/50 rounded-full">&#9889;</span> <span class="ml-2">Electricity Bill</span></td>
+          <td class="px-5 py-3 text-slate-400 hidden sm:table-cell">Jul 25</td>
+          <td class="px-5 py-3 text-right text-red-400 font-semibold">- FCFA 18,500</td>
+        </tr>
+        <tr class="hover:bg-bank-700/50">
+          <td class="px-5 py-3"><span class="w-8 h-8 inline-flex items-center justify-center bg-purple-900/50 rounded-full">&#9993;</span> <span class="ml-2">Ada Obi</span></td>
+          <td class="px-5 py-3 text-slate-400 hidden sm:table-cell">Jul 22</td>
+          <td class="px-5 py-3 text-right text-red-400 font-semibold">- FCFA 25,000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="text-center text-xs text-slate-500">MegaBank UI demo · Tailwind CSS only</div>
+</main>
+
+</body>
+</html>
