@@ -15,19 +15,37 @@
   <div class="flex items-center gap-2 font-bold text-xl">
     <span class="w-8 h-8 bg-bank-accent rounded-lg flex items-center justify-center text-bank-900"></span> MegaBank
   </div>
-  <div class="flex items-center gap-2 text-sm bg-bank-700 px-3 py-1.5 rounded-full">
-    <span class="w-2 h-2 bg-bank-accent rounded-full animate-pulse"></span> Online
-  </div>
+    <div class="flex items-center gap-4">
+    <div class="hidden sm:flex items-center gap-2 text-sm bg-bank-700 px-3 py-1.5 rounded-full">
+      <span class="w-2 h-2 bg-bank-accent rounded-full animate-pulse"></span> Online
+    </div>
+    <div class="flex items-center gap-2">
+      <img src="pho/kot.jpg" alt="Eric dik" class="w-10 h-10 rounded-full border-2 border-bank-accent object-cover">
+      <div class="hidden md:block">
+        <p class="text-sm font-semibold leading-none">Eric dik</p>
+        <p class="text-xs text-slate-400">Customer</p>
+      </div>
+    </div>
 </header>
 
 <main class="max-w-5xl mx-auto p-6 space-y-6">
 
+     <!-- Dashboard heading -->
+  <div class="flex flex-wrap items-center justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-bold">Dashboard</h1>
+      <p class="text-sm text-slate-400">Welcome back, Eric &#128075; Here's your money today.</p>
+    </div>
+    <div class="flex items-center gap-2 text-sm bg-bank-800 border border-bank-600/50 px-3 py-2 rounded-xl">
+      <input type="date" value="2026-07-28" class="bg-transparent outline-none text-slate-300">
+    </div>
+  </div>
   <!-- Balance cards -->
   <div class="grid sm:grid-cols-3 gap-4">
     <div class="bg-gradient-to-br from-bank-accent to-emerald-800 rounded-2xl p-5 shadow-lg">
       <p class="text-sm opacity-80">Total Balance</p>
       <p class="text-3xl font-bold mt-1">FCFA 1,250,000</p>
-      <p class="text-xs mt-3 opacity-70">Available · Visa ...2431</p>
+      <p class="text-xs mt-3 opacity-70">Available</p>
     </div>
     <div class="bg-bank-800 rounded-2xl p-5 border border-bank-600/50">
       <p class="text-sm text-slate-400">Income (July)</p>
@@ -59,6 +77,68 @@
         <tr class="hover:bg-bank-700/50">
           <td class="px-5 py-3"><span class="w-8 h-8 inline-flex items-center justify-center bg-emerald-900/50 rounded-full">&#128666;</span> <span class="ml-2">Salary · TechCorp</span></td>
           <td class="px-5 py-3 text-slate-400 hidden sm:table-cell">Jul 28</td>
+          <!-- Dashboard widgets -->
+<div class="grid lg:grid-cols-2 gap-4">
+  <!-- Spending chart -->
+  <div class="bg-bank-800 rounded-2xl border border-bank-600/50 p-5">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="font-semibold">Spending — Last 7 Days</h2>
+      <span class="text-xs text-emerald-400 font-semibold">-12%</span>
+    </div>
+    <div class="flex items-end justify-between gap-2 h-32">
+      <div class="flex flex-col items-center gap-1 flex-1"><div class="w-full bg-bank-600/50 rounded-t-lg" style="height:20%"></div><span class="text-[10px] text-slate-500">Mon</span></div>
+      <div class="flex flex-col items-center gap-1 flex-1"><div class="w-full bg-bank-accent/80 rounded-t-lg" style="height:45%"></div><span class="text-[10px] text-slate-500">Tue</span></div>
+      <div class="flex flex-col items-center gap-1 flex-1"><div class="w-full bg-bank-600/50 rounded-t-lg" style="height:30%"></div><span class="text-[10px] text-slate-500">Wed</span></div>
+      <div class="flex flex-col items-center gap-1 flex-1"><div class="w-full bg-bank-accent/80 rounded-t-lg" style="height:70%"></div><span class="text-[10px] text-slate-500">Thu</span></div>
+      <div class="flex flex-col items-center gap-1 flex-1"><div class="w-full bg-bank-600/50 rounded-t-lg" style="height:55%"></div><span class="text-[10px] text-slate-500">Fri</span></div>
+      <div class="flex flex-col items-center gap-1 flex-1"><div class="w-full bg-bank-accent/80 rounded-t-lg" style="height:38%"></div><span class="text-[10px] text-slate-500">Sat</span></div>
+      <div class="flex flex-col items-center gap-1 flex-1"><div class="w-full bg-bank-600/50 rounded-t-lg" style="height:25%"></div><span class="text-[10px] text-slate-500">Sun</span></div>
+    </div>
+  </div>
+
+  <!-- Spending breakdown -->
+  <div class="bg-bank-800 rounded-2xl border border-bank-600/50 p-5">
+    <h2 class="font-semibold mb-4">Spending Breakdown</h2>
+    <div class="space-y-3">
+      <div><div class="flex justify-between text-sm mb-1"><span>Shopping</span><span class="text-slate-400">38%</span></div><div class="h-2 bg-bank-600/50 rounded-full"><div class="h-2 w-[38%] bg-emerald-400 rounded-full"></div></div></div>
+      <div><div class="flex justify-between text-sm mb-1"><span>Utilities</span><span class="text-slate-400">24%</span></div><div class="h-2 bg-bank-600/50 rounded-full"><div class="h-2 w-[24%] bg-blue-400 rounded-full"></div></div></div>
+      <div><div class="flex justify-between text-sm mb-1"><span>Transport</span><span class="text-slate-400">18%</span></div><div class="h-2 bg-bank-600/50 rounded-full"><div class="h-2 w-[18%] bg-purple-400 rounded-full"></div></div></div>
+      <div><div class="flex justify-between text-sm mb-1"><span>Food & Dining</span><span class="text-slate-400">12%</span></div><div class="h-2 bg-bank-600/50 rounded-full"><div class="h-2 w-[12%] bg-amber-400 rounded-full"></div></div></div>
+      <div><div class="flex justify-between text-sm mb-1"><span>Others</span><span class="text-slate-400">8%</span></div><div class="h-2 bg-bank-600/50 rounded-full"><div class="h-2 w-[8%] bg-rose-400 rounded-full"></div></div></div>
+    </div>
+  </div>
+
+  <!-- Accounts -->
+  <div class="bg-bank-800 rounded-2xl border border-bank-600/50 p-5">
+    <div class="flex justify-between items-center mb-3">
+      <h2 class="font-semibold">My Accounts</h2>
+      <button class="text-xs text-emerald-400 hover:text-emerald-300">+ Add account</button>
+    </div>
+    <div class="space-y-3">
+      <div class="flex items-center justify-between bg-bank-700/60 rounded-xl p-3">
+        <div class="flex items-center gap-3"><span class="w-9 h-9 bg-emerald-900/60 rounded-lg flex items-center justify-center">&#128176;</span><div><p class="text-sm font-medium">Savings Account</p><p class="text-xs text-slate-400">•••• 8832</p></div></div>
+        <div class="text-right"><p class="text-sm font-bold text-emerald-400">&#8358; 850,000</p><p class="text-xs text-slate-500">+2.5% APR</p></div>
+      </div>
+      <div class="flex items-center justify-between bg-bank-700/60 rounded-xl p-3">
+        <div class="flex items-center gap-3"><span class="w-9 h-9 bg-blue-900/60 rounded-lg flex items-center justify-center">&#127974;</span><div><p class="text-sm font-medium">Current Account</p><p class="text-xs text-slate-400">•••• 2431</p></div></div>
+        <div class="text-right"><p class="text-sm font-bold">&#8358; 400,000</p><p class="text-xs text-slate-500">Visa Debit</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick transfers -->
+  <div class="bg-bank-800 rounded-2xl border border-bank-600/50 p-5">
+    <h2 class="font-semibold mb-3">Quick Transfer</h2>
+    <div class="flex gap-4 mb-4">
+      <div class="flex flex-col items-center gap-1"><img src="" class="w-12 h-12 rounded-full border-2 border-bank-accent"><span class="text-xs text-slate-400">paola</span></div>
+      <div class="flex flex-col items-center gap-1"><img src="" class="w-12 h-12 rounded-full border-2 border-bank-accent"><span class="text-xs text-slate-400">mercy</span></div>
+      <div class="flex flex-col items-center gap-1 justify-center"><button class="w-12 h-12 bg-bank-700 rounded-full text-lg border-2 border-dashed border-bank-600 hover:bg-bank-600 transition">+</button><span class="text-xs text-slate-400">More</span></div>
+    </div>
+    <input type="text" placeholder="Amount (&#8358;)" class="w-full bg-bank-700/60 border border-bank-600/50 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-bank-accent mb-3">
+    <button class="w-full py-2.5 bg-bank-accent text-bank-900 rounded-xl text-sm font-bold hover:bg-emerald-300 active:scale-95 transition">Send Money</button>
+  </div>
+</div>
+
           <td class="px-5 py-3 text-right text-emerald-400 font-semibold">+FCFA 400,000</td>
         </tr>
         <tr class="hover:bg-bank-700/50">
@@ -72,7 +152,7 @@
           <td class="px-5 py-3 text-right text-red-400 font-semibold">- FCFA 18,500</td>
         </tr>
         <tr class="hover:bg-bank-700/50">
-          <td class="px-5 py-3"><span class="w-8 h-8 inline-flex items-center justify-center bg-purple-900/50 rounded-full">&#9993;</span> <span class="ml-2">Ada Obi</span></td>
+          <td class="px-5 py-3"><span class="w-8 h-8 inline-flex items-center justify-center bg-purple-900/50 rounded-full">&#9993;</span> <span class="ml-2">Eric dik</span></td>
           <td class="px-5 py-3 text-slate-400 hidden sm:table-cell">Jul 22</td>
           <td class="px-5 py-3 text-right text-red-400 font-semibold">- FCFA 25,000</td>
         </tr>
@@ -80,7 +160,7 @@
     </table>
   </div>
 
-  <div class="text-center text-xs text-slate-500">MegaBank UI demo · Tailwind CSS only</div>
+  <div class="text-center text-xs text-slate-500">Common bank features</div>
 </main>
 
 </body>
