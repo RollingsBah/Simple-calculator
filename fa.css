@@ -1,0 +1,591 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #08080c;
+            color: white;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        .navbar {
+            height: 65px;
+            width: 100%;
+            background: #08090d;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 25px;
+
+            border-bottom: 3px solid #f15a24;
+
+            position: relative;
+            z-index: 10;
+        }
+
+        /* LOGO */
+
+        .logo {
+            border: 3px solid white;
+            padding: 5px 10px;
+
+            font-size: 23px;
+            font-weight: 900;
+
+            margin-right: 30px;
+        }
+
+        /* MENU */
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 27px;
+
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+
+            font-size: 15px;
+            font-weight: bold;
+
+            text-transform: uppercase;
+
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #ff5722;
+        }
+
+        .arrow {
+            font-size: 10px;
+            margin-left: 4px;
+        }
+
+        /* LOGIN */
+
+        .login {
+            margin-left: auto;
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            color: white;
+
+            font-size: 14px;
+        }
+
+        .user-icon {
+            font-size: 23px;
+        }
+
+
+        /* ================= DROPDOWN ================= */
+
+        .menu-item {
+            position: relative;
+        }
+
+        .dropdown {
+            position: absolute;
+
+            top: 35px;
+            left: 0;
+
+            width: 190px;
+
+            background: #111116;
+
+            border-top: 3px solid #ff5722;
+
+            display: none;
+
+            list-style: none;
+
+            padding: 10px 0;
+        }
+
+        .dropdown li {
+            padding: 10px 15px;
+        }
+
+        .dropdown a {
+            font-size: 13px;
+        }
+
+        .menu-item:hover .dropdown {
+            display: block;
+        }
+
+
+        /* ================= ADVERTISEMENT ================= */
+
+        .advertisement {
+            width: 70%;
+            height: 90px;
+
+            margin: 0 auto;
+
+            background: linear-gradient(
+                90deg,
+                #ff6a2a,
+                #e94b24
+            );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: transparent;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+            width: 100%;
+            max-width: 1400px;
+
+            height: 570px;
+
+            margin: 35px auto 0;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background: #15151b;
+        }
+
+        /* HERO IMAGE */
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+        /* DARK GRADIENT */
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,0.85) 0%,
+                    rgba(0,0,0,0.35) 45%,
+                    rgba(0,0,0,0.05) 100%
+                );
+        }
+
+
+        /* ================= HERO CONTENT ================= */
+
+        .hero-content {
+            position: absolute;
+
+            z-index: 2;
+
+            left: 55px;
+            bottom: 50px;
+
+            max-width: 600px;
+        }
+
+        /* CROWN */
+
+        .crown {
+            font-size: 80px;
+
+            margin-bottom: 5px;
+
+            filter: drop-shadow(
+                0 5px 5px rgba(0,0,0,0.8)
+            );
+        }
+
+        /* TITLE */
+
+        .hero-title {
+            font-size: 43px;
+
+            line-height: 1.05;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            text-shadow:
+                3px 3px 5px black;
+        }
+
+          /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            width: 94%;
+            max-width: 1400px;
+
+            margin: 30px auto;
+        }
+
+
+        /* =========================
+           NEWS LAYOUT
+        ========================= */
+
+        .news-layout {
+            display: grid;
+
+            grid-template-columns: 2fr 1fr;
+
+            gap: 20px;
+        }
+
+
+        /* =========================
+           MAIN ARTICLE
+        ========================= */
+
+        .main-story {
+            background: #15161c;
+
+            overflow: hidden;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 500px;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+        .main-content {
+            padding: 25px;
+        }
+
+        .category {
+            color: #bdbdbd;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            margin-bottom: 28px;
+        }
+
+        .main-title {
+            font-size: 40px;
+
+            line-height: 1.15;
+
+            margin-bottom: 25px;
+        }
+
+        .description {
+            color: #c6c6c6;
+
+            font-size: 18px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           RIGHT SIDE
+        ========================= */
+
+        .side-news {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 20px;
+        }
+
+
+        /* =========================
+           SMALL CARD
+        ========================= */
+
+        .side-card {
+            background: #15161c;
+
+            overflow: hidden;
+        }
+
+        .side-image {
+            width: 100%;
+
+            height: 270px;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+        .side-content {
+            padding: 18px;
+        }
+
+        .side-title {
+            font-size: 22px;
+
+            line-height: 1.25;
+
+            margin-bottom: 25px;
+        }
+
+        .meta {
+            color: #aaa;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           IMAGE OVERLAY
+        ========================= */
+
+        .image-container {
+            position: relative;
+        }
+
+        .image-container::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    transparent 55%,
+                    rgba(0,0,0,.45)
+                );
+        }
+
+
+        /* =========================
+           HOVER
+        ========================= */
+
+        .main-story,
+        .side-card {
+            transition: 0.3s;
+        }
+
+        .main-story:hover,
+        .side-card:hover {
+            transform: translateY(-4px);
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 11px;
+            }
+
+            .news-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .main-image {
+                height: 400px;
+            }
+
+            .side-news {
+                display: grid;
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+
+        /* ================= BOTTOM NEWS ================= */
+
+        .news-container {
+            width: 95%;
+            max-width: 1400px;
+
+            margin: 25px auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .news-card {
+            height: 180px;
+
+            background: #16161c;
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+        .news-card h3 {
+            position: absolute;
+
+            bottom: 0;
+            left: 0;
+
+            width: 100%;
+
+            padding: 30px 15px 15px;
+
+            background:
+                linear-gradient(
+                    transparent,
+                    rgba(0,0,0,.9)
+                );
+
+            font-size: 18px;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        .mobile-menu {
+            display: none;
+
+            font-size: 28px;
+
+            cursor: pointer;
+        }
+
+        @media (max-width: 900px) {
+
+            .nav-menu {
+                gap: 12px;
+            }
+
+            .nav-menu a {
+                font-size: 11px;
+            }
+
+            .logo {
+                margin-right: 15px;
+            }
+
+            .hero {
+                height: 450px;
+            }
+
+            .hero-title {
+                font-size: 32px;
+            }
+        }
+
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                justify-content: space-between;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+
+                position: absolute;
+
+                top: 65px;
+                left: 0;
+
+                width: 100%;
+
+                background: #08090d;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                padding: 20px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .login {
+                display: none;
+            }
+
+            .advertisement {
+                width: 90%;
+                height: 70px;
+            }
+
+            .hero {
+                height: 400px;
+                margin-top: 20px;
+            }
+
+            .hero-content {
+                left: 20px;
+                bottom: 30px;
+
+                max-width: 90%;
+            }
+
+            .crown {
+                font-size: 55px;
+            }
+
+            .hero-title {
+                font-size: 27px;
+            }
+
+            .news-container {
+                grid-template-columns: 1fr;
+            }
+        }
